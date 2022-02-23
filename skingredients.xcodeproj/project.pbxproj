@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A13F56327C5EF73009B3465 /* augmentedReality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = augmentedReality.swift; sourceTree = "<group>"; };
 		7A43900427C4592000121492 /* skingredientsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skingredientsApp.swift; sourceTree = "<group>"; };
 		7A43900527C4592000121492 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A43900627C4592300121492 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 			children = (
 				7A43900427C4592000121492 /* skingredientsApp.swift */,
 				7A43900527C4592000121492 /* ContentView.swift */,
+				7A13F56327C5EF73009B3465 /* augmentedReality.swift */,
 				7A43900627C4592300121492 /* Assets.xcassets */,
 			);
 			path = Shared;
