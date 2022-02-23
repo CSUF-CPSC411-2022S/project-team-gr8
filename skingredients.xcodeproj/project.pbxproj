@@ -18,6 +18,8 @@
 		7A43903027C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43903127C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43904327C4667E00121492 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7A43904227C4667E00121492 /* .gitignore */; };
+		7A84871527C5F0A7006D70F9 /* warnings_feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84871427C5F0A7006D70F9 /* warnings_feature.swift */; };
+		7A84871627C5F0A7006D70F9 /* warnings_feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84871427C5F0A7006D70F9 /* warnings_feature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 		7A43902827C4592300121492 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		7A43902A27C4592300121492 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		7A43904227C4667E00121492 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7A84871427C5F0A7006D70F9 /* warnings_feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = warnings_feature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 				7A43900427C4592000121492 /* skingredientsApp.swift */,
 				7A43900527C4592000121492 /* ContentView.swift */,
 				7A43900627C4592300121492 /* Assets.xcassets */,
+				7A84871427C5F0A7006D70F9 /* warnings_feature.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -303,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A84871527C5F0A7006D70F9 /* warnings_feature.swift in Sources */,
 				7A43902E27C4592300121492 /* ContentView.swift in Sources */,
 				7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */,
 			);
@@ -312,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A84871627C5F0A7006D70F9 /* warnings_feature.swift in Sources */,
 				7A43902F27C4592300121492 /* ContentView.swift in Sources */,
 				7A43902D27C4592300121492 /* skingredientsApp.swift in Sources */,
 			);
