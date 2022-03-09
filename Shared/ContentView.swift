@@ -20,18 +20,33 @@ struct ContentView: View {
     let tabBarImagesNames = ["house", "1.magnifyingglass.ar", "text.magnifyingglass"]
 
     var body: some View {
-        
         // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
         VStack(spacing: 0){
             ZStack {
                 Spacer()
+                // AR Page
                     .fullScreenCover(isPresented: $shouldShowModal, content: {
-                        // To dismiss the fullscreen cover
-                        Button(action: {shouldShowModal.toggle()}, label: {
-                            Text("Insert AR Function")
-                        })
                         
-                    })
+                        HStack{
+                            // Dismiss Button
+                            Button(action: {shouldShowModal.toggle()}, label: {
+                                Image(systemName: "x.circle.fill")
+                                    .padding()
+                                    .font(.headline)
+                                    .foregroundColor(.orange)
+                            })
+                            Spacer()
+                        }.padding(.top, UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.safeAreaInsets.top)
+                        Spacer()
+                        VStack {
+                            Text ("AR Search")
+                                .font(.title)
+                            Text ("Full screen cover")
+                            
+                            Spacer()
+                        }// VStack
+                        Spacer()
+                    })// FullScreenCover
                 
                 switch selectedIndex {
                 case 0:
@@ -65,10 +80,12 @@ struct ContentView: View {
                         })
                         .navigationTitle(" SkinGredients")
                     }
+                    
                 case 1:
                     NavigationView{
                         Text("AR Search")
                             .navigationTitle("AR Search")
+                            .background(Color.yellow)
                     }
                 case 2:
                     ScrollView{
@@ -82,6 +99,7 @@ struct ContentView: View {
 
                 }
             }
+            
             // Spacer()
             // Divider to separate Content and Nav Bar
             Divider()
@@ -90,24 +108,22 @@ struct ContentView: View {
             HStack{
                 ForEach(0..<3) { num in
                     Button(action: {
-                        // Action for the button
-                        if num == 1 {
+                        // Actions for the buttons
+                        if num == 1 {                   // AR Search Button
                             shouldShowModal.toggle()
                             return
                         }
-                        
                         selectedIndex = num
                     }, label: {
                         Spacer()
                         
-                        // For AR Button, Most Important Feature
-                        if num == 1 {
+                        // Custom Button Display
+                        if num == 1 {               // AR Search Button
                             Image(systemName: tabBarImagesNames[num])
                                 .font(.system(size: 35, weight: .bold))
                                 .foregroundColor(.orange)
                             
-                        } else {
-                            // For other tab buttons, if we decide to add more
+                        } else {                    // For other buttons
                             Image(systemName: tabBarImagesNames[num])
                                 .font(.system(size: 25, weight: .bold))
                                 .foregroundColor(selectedIndex == num ? Color(.black) : .init(white: 0.8))
@@ -119,10 +135,11 @@ struct ContentView: View {
                     
                 }
             }
-            // Bottom Tab Bar
+            
         }
         
     }
+        
 }
 
 // TODO: Need a tabview with a search page, and an AR page for the user. This is mainly
