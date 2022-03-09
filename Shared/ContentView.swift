@@ -23,31 +23,29 @@ struct ContentView: View {
         // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
         VStack(spacing: 0){
             ZStack {
+                
                 Spacer()
                 // AR Page
                     .fullScreenCover(isPresented: $shouldShowModal, content: {
-                        
-                        HStack{
-                            // Dismiss Button
-                            Button(action: {shouldShowModal.toggle()}, label: {
-                                Image(systemName: "x.circle.fill")
-                                    .padding()
-                                    .font(.headline)
-                                    .foregroundColor(.orange)
-                            })
-                            Spacer()
-                        }.padding(.top, UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.safeAreaInsets.top)
-                        Spacer()
-                        VStack {
-                            Text ("AR Search")
-                                .font(.title)
-                            Text ("Full screen cover")
+                        // Dismiss button
+                        Button(action: {shouldShowModal.toggle()}, label: {
+                            Image(systemName: "x.circle.fill")
+                                .foregroundColor(.orange)
                             
-                            Spacer()
-                        }// VStack
+                        })
                         Spacer()
-                    })// FullScreenCover
+                    
+                        VStack {
+                            NavigationView {
+                                Text("AR Search")
+                                    .navigationTitle("AR Search")
+                            }
+                        }
+                        
+                    })
                 
+                
+           // Controls Different Pages
                 switch selectedIndex {
                 case 0:
                 // Database View --- HOME Button
@@ -77,20 +75,20 @@ struct ContentView: View {
                             
                         }.onAppear(perform: {
                             db.getAllData()
-                        })
-                        .navigationTitle(" SkinGredients")
+                        }).navigationTitle("SkinGredients")
+
                     }
-                    
                 case 1:
-                    NavigationView{
+                // AR View
+                    NavigationView {
                         Text("AR Search")
                             .navigationTitle("AR Search")
-                            .background(Color.yellow)
                     }
                 case 2:
-                    ScrollView{
+                // Search Text View
+                    NavigationView {
                         Text("Search Bar")
-                        .navigationTitle("Text Search")
+                            .navigationTitle("Text Search")
                     }
                 default:
                     NavigationView{
@@ -105,7 +103,8 @@ struct ContentView: View {
             Divider()
                 .padding(.bottom, 8)
             
-            HStack{
+            
+            HStack {
                 ForEach(0..<3) { num in
                     Button(action: {
                         // Actions for the buttons
@@ -113,6 +112,7 @@ struct ContentView: View {
                             shouldShowModal.toggle()
                             return
                         }
+                        
                         selectedIndex = num
                     }, label: {
                         Spacer()
