@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var data: String = ""
+    @ObservedObject var db = ProductsDatabase()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                Text("Welcome to SkinGredients!")
+                List(db.items, id: \.id) { item in
+                    HStack {
+                        Text("DB ID: ").bold()
+                        Text(String(item.id))
+                    }
+                    HStack {
+                        Text("Brand: ").bold()
+                        Text(item.brand)
+                    }
+                    HStack {
+                        Text("Product: ").bold()
+                        Text(item.name)
+                    }
+                    HStack {
+                        Text("Ingredients: ").bold()
+                        Text(item.ingredient_list.joined(separator: ", "))
+                    }
+                }
+            }.onAppear(perform: {
+                db.getData()
+            })
+        }.navigationTitle("SkinGredients")
     }
 }
 
