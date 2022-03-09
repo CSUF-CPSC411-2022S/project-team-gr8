@@ -2,7 +2,7 @@
 //  ProductsDatabase.swift
 //  skingredients (iOS)
 //
-//  Created by csuftitan on 2/27/22.
+//  Created by Johnson Tong on 2/27/22.
 //
 
 import Foundation
