@@ -10,10 +10,8 @@ import Foundation
 class ProductsDatabase: ObservableObject {
     let url = "https://skincare-api.herokuapp.com/products"
     @Published var items = [MyResult]()
-    init() {
-        
-    }
-    func getData() {
+
+    func getAllData() {
         guard let url = URL(string: self.url) else {return}
         
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -34,13 +32,14 @@ class ProductsDatabase: ObservableObject {
             }
         }.resume()
     }
+    
+    // TODO: Filter the data based on a keyword. We have a few options here.
+    // 1. Locally sort out the items in items array. This might be costly for devices because
+    //    of how many items there are.
+    // 2. Create a method and another data member or something that will make a call to the API using
+    //    the "Like" GET call. Check out the Skincare github for info on that.
+    
 }
-
-
-//struct Response: Codable {
-//    let results: MyResult
-//    let status: String
-//}
 
 struct MyResult: Decodable {
     let id: Int

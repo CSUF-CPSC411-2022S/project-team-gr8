@@ -34,7 +34,7 @@ struct ContentView: View {
                     }
                 }
             }.onAppear(perform: {
-                db.getData()
+                db.getAllData()
             })
         }.navigationTitle("SkinGredients")
     }
