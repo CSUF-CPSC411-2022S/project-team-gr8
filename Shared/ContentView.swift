@@ -23,7 +23,6 @@ struct ContentView: View {
         // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
         VStack(spacing: 0){
             ZStack {
-                
                 Spacer()
                 // AR Page
                     .fullScreenCover(isPresented: $shouldShowModal, content: {
@@ -31,15 +30,16 @@ struct ContentView: View {
                         Button(action: {shouldShowModal.toggle()}, label: {
                             Image(systemName: "x.circle.fill")
                                 .foregroundColor(.orange)
-                            
                         })
                         Spacer()
-                    
-                        VStack {
-                            NavigationView {
-                                Text("AR Search")
-                                    .navigationTitle("AR Search")
+                        
+                        NavigationView {
+                            
+                            ScrollView {
+                                Text("Insert AR Content")
+                                    .italic()
                             }
+                            .navigationTitle("AR Search")
                         }
                         
                     })
@@ -87,8 +87,12 @@ struct ContentView: View {
                 case 2:
                 // Search Text View
                     NavigationView {
-                        Text("Search Bar")
-                            .navigationTitle("Text Search")
+                        ScrollView{
+                            Text("Insert Search Bar")
+                                .italic()
+                                
+                        }
+                        .navigationTitle("Text Search")
                     }
                 default:
                     NavigationView{
