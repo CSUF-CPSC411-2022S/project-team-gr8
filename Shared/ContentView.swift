@@ -10,33 +10,118 @@ import SwiftUI
 struct ContentView: View {
     @State var data: String = ""
     @ObservedObject var db = ProductsDatabase()
+    
+    // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
+    
+    @State var selectedIndex = 0
+    @State var shouldShowModal = false
+    
+    // House = 1, Magnifyingglass AR = 2 , Magnifyingglass Text = 3,
+    let tabBarImagesNames = ["house", "1.magnifyingglass.ar", "text.magnifyingglass"]
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Welcome to SkinGredients!")
-                List(db.items, id: \.id) { item in
-                    HStack {
-                        Text("DB ID: ").bold()
-                        Text(String(item.id))
+        
+        // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
+        VStack(spacing: 0){
+            ZStack {
+                Spacer()
+                    .fullScreenCover(isPresented: $shouldShowModal, content: {
+                        // To dismiss the fullscreen cover
+                        Button(action: {shouldShowModal.toggle()}, label: {
+                            Text("Insert AR Function")
+                        })
+                        
+                    })
+                
+                switch selectedIndex {
+                case 0:
+                // Database View --- HOME Button
+                    NavigationView{
+                        VStack {
+                            Text("Welcome to SkinGredients!")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(.orange)
+                            List(db.items, id: \.id) { item in
+                                HStack {
+                                    Text("DB ID: ").bold()
+                                    Text(String(item.id))
+                                }
+                                HStack {
+                                    Text("Brand: ").bold()
+                                    Text(item.brand)
+                                }
+                                HStack {
+                                    Text("Product: ").bold()
+                                    Text(item.name)
+                                }
+                                HStack {
+                                    Text("Ingredients: ").bold()
+                                    Text(item.ingredient_list.joined(separator: ", "))
+                                }
+                            }
+                            
+                        }.onAppear(perform: {
+                            db.getAllData()
+                        })
+                        .navigationTitle(" SkinGredients")
                     }
-                    HStack {
-                        Text("Brand: ").bold()
-                        Text(item.brand)
+                case 1:
+                    NavigationView{
+                        Text("AR Search")
+                            .navigationTitle("AR Search")
                     }
-                    HStack {
-                        Text("Product: ").bold()
-                        Text(item.name)
+                case 2:
+                    ScrollView{
+                        Text("Search Bar")
+                        .navigationTitle("Text Search")
                     }
-                    HStack {
-                        Text("Ingredients: ").bold()
-                        Text(item.ingredient_list.joined(separator: ", "))
+                default:
+                    NavigationView{
+                        Text("Remaining Tabs")
                     }
+
                 }
-            }.onAppear(perform: {
-                db.getAllData()
-            })
-        }.navigationTitle("SkinGredients")
+            }
+            // Spacer()
+            // Divider to separate Content and Nav Bar
+            Divider()
+                .padding(.bottom, 8)
+            
+            HStack{
+                ForEach(0..<3) { num in
+                    Button(action: {
+                        // Action for the button
+                        if num == 1 {
+                            shouldShowModal.toggle()
+                            return
+                        }
+                        
+                        selectedIndex = num
+                    }, label: {
+                        Spacer()
+                        
+                        // For AR Button, Most Important Feature
+                        if num == 1 {
+                            Image(systemName: tabBarImagesNames[num])
+                                .font(.system(size: 35, weight: .bold))
+                                .foregroundColor(.orange)
+                            
+                        } else {
+                            // For other tab buttons, if we decide to add more
+                            Image(systemName: tabBarImagesNames[num])
+                                .font(.system(size: 25, weight: .bold))
+                                .foregroundColor(selectedIndex == num ? Color(.black) : .init(white: 0.8))
+                        }
+                        
+                        Spacer()
+                        
+                    })
+                    
+                }
+            }
+            // Bottom Tab Bar
+        }
+        
     }
 }
 
