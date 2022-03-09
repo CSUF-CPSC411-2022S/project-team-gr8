@@ -8,7 +8,7 @@
 import Foundation
 
 class ProductsDatabase: ObservableObject {
-    let url = "https://skincare-api.herokuapp.com/products/3"
+    let url = "https://skincare-api.herokuapp.com/products"
     @Published var items = [MyResult]()
     init() {
         
@@ -19,10 +19,10 @@ class ProductsDatabase: ObservableObject {
         URLSession.shared.dataTask(with: url) { data, response, error in
             do {
                 if let data = data {
-                    let result = try JSONDecoder().decode(MyResult.self, from: data)
+                    let result = try JSONDecoder().decode([MyResult].self, from: data)
                     
                     DispatchQueue.main.async{
-                        self.items.append(result)
+                        self.items = result
                     }
                 }
                 else {
