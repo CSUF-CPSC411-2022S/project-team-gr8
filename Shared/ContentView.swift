@@ -40,6 +40,9 @@ struct ContentView: View {
     }
 }
 
+// TODO: Need a tabview with a search page, and an AR page for the user. This is mainly
+//       just user interface for now. Check out https://www.youtube.com/watch?v=TgvYFfCjDMo
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
