@@ -74,20 +74,20 @@ struct ContentView: View {
                                 }
                                 HStack {
                                     // button for amazon
-                                    Button(action: {ap.AmazonPrices(_item: item.name)}){
+                                    Button(action: {ap.AmazonPrices(_brand: item.brand,_item: item.name)}){
                                         Text("Click for Amazon Prices")
                                     }.buttonStyle(PlainButtonStyle())
                                 }
                                 HStack {
                                     // button for amazon
-                                    Button(action: {ap.AmazonPrices(_item: item.brand)}){
+                                    Button(action: {ap.Amazonbrand(_brand: item.brand)}){
                                         Text("Shop for Same Brand")
                                     }.buttonStyle(PlainButtonStyle())
                                 }
                                 HStack {
                                     // button for google
-                                    Button(action: {ap.GSearch(_item: item.name)}){
-                                        Text("More Info on Product")
+                                    Button(action: {ap.GSearch(_brand: item.brand, _item: item.name)}){
+                                        Text("More Info")
                                     }.buttonStyle(PlainButtonStyle())
                                 }
                             }
