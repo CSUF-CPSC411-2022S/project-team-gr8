@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var data: String = ""
     @ObservedObject var db = ProductsDatabase() 
+    var ap = AmazonPrices()
     
     // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
     
@@ -73,14 +74,20 @@ struct ContentView: View {
                                 }
                                 HStack {
                                     // button for amazon
-                                    Button(action: {Amazon()}){
-                                        Text("Click for Amazon")
+                                    Button(action: {ap.AmazonPrices(_item: item.name)}){
+                                        Text("Click for Amazon Prices")
+                                    }.buttonStyle(PlainButtonStyle())
+                                }
+                                HStack {
+                                    // button for amazon
+                                    Button(action: {ap.AmazonPrices(_item: item.brand)}){
+                                        Text("Shop for Same Brand")
                                     }.buttonStyle(PlainButtonStyle())
                                 }
                                 HStack {
                                     // button for google
-                                    Button(action: {GSearch()}){
-                                        Text("Click for Google")
+                                    Button(action: {ap.GSearch(_item: item.name)}){
+                                        Text("More Info on Product")
                                     }.buttonStyle(PlainButtonStyle())
                                 }
                             }
@@ -170,17 +177,4 @@ struct ContentView_Previews: PreviewProvider {
 // The url functions appear to work better when under ContenView rather than their seperate class
 // at least for now...
 
-// opens amazon
-func Amazon(){
-    
-    if let url = URL(string: "https://www.amazon.com"){
-        UIApplication.shared.open(url)
-    }
-}
 
-// opens google
-func GSearch(){
-    if let url = URL(string: "https://www.google.com"){
-        UIApplication.shared.open(url)
-    }
-}

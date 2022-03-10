@@ -19,15 +19,21 @@ class AmazonPrices {
     // find a way around the UI error when using classes
     func AmazonPrices(_item: String){
         // not working yet
+        /*
+         let aString = "This is my string"
+         let newString = aString.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+         */
+        let plus = _item.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
         
-        if let url = URL(string: "https://www.amazon.com/" + _item){
+        if let url = URL(string: "https://www.amazon.com/s?k=" + plus){
             UIApplication.shared.open(url)
         }
     } 
 
     func GSearch(_item: String){
         // not working yet
-        if let url = URL(string: "https://www.google.com/" + _item){
+        let plus = _item.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        if let url = URL(string: "https://www.google.com/search?q=" + plus){
             UIApplication.shared.open(url)
         }
         
