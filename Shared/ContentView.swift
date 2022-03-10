@@ -9,12 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State var data: String = ""
+    @State var searchTerm: String = ""
     @ObservedObject var db = ProductsDatabase()
 
     var body: some View {
         NavigationView {
             VStack {
                 Text("Welcome to SkinGredients!")
+                InputBox(searchTerm: $searchTerm)
+                Spacer()
                 List(db.items, id: \.id) { item in
                     HStack {
                         Text("DB ID: ").bold()
@@ -43,5 +46,17 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct InputBox: View {
+    @Binding var searchTerm: String
+    var body: some View {
+        HStack {
+            Spacer()
+            Text("Search:").bold().padding(.leading, 20)
+            TextField("Cleanser, rose water...", text: $searchTerm)
+            Spacer()
+        }.padding(30)
     }
 }
