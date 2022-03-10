@@ -14,10 +14,10 @@
 		7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43900427C4592000121492 /* skingredientsApp.swift */; };
 		7A43902D27C4592300121492 /* skingredientsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43900427C4592000121492 /* skingredientsApp.swift */; };
 		7A43902E27C4592300121492 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43900527C4592000121492 /* ContentView.swift */; };
-		7A43902F27C4592300121492 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43900527C4592000121492 /* ContentView.swift */; };
 		7A43903027C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43903127C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43904327C4667E00121492 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7A43904227C4667E00121492 /* .gitignore */; };
+		7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +52,7 @@
 		7A43902827C4592300121492 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		7A43902A27C4592300121492 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		7A43904227C4667E00121492 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +106,7 @@
 				7A43900527C4592000121492 /* ContentView.swift */,
 				7A13F56327C5EF73009B3465 /* augmentedReality.swift */,
 				7A43900627C4592300121492 /* Assets.xcassets */,
+				7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -307,6 +309,7 @@
 			files = (
 				7A43902E27C4592300121492 /* ContentView.swift in Sources */,
 				7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */,
+				7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +317,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A43902F27C4592300121492 /* ContentView.swift in Sources */,
 				7A43902D27C4592300121492 /* skingredientsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z97S4D8BTG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -500,6 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z97S4D8BTG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
