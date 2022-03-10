@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var data: String = ""
-    @ObservedObject var db = ProductsDatabase()
+    @ObservedObject var db = ProductsDatabase() 
     
     // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
     

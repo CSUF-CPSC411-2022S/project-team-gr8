@@ -4,7 +4,7 @@
 //
 //  Created by csuftitan on 2/27/22.
 //  Implementing Patricia's ProductDatabase
-
+ 
 import Foundation
 
 class ProductsDatabase: ObservableObject {

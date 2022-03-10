@@ -12,7 +12,7 @@ import XCTest
 class Tests_AmazonPrices: XCTestCase {
     
     
-    func testAmazon() {
+    func testAmazon() { 
         // TODO:
         // tests for the application being able to access to www.amazon.com
     }
