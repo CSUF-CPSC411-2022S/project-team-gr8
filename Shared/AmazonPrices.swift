@@ -23,7 +23,7 @@ class AmazonPrices {
         if let url = URL(string: "https://www.amazon.com/" + _item){
             UIApplication.shared.open(url)
         }
-    }
+    } 
 
     func GSearch(_item: String){
         // not working yet

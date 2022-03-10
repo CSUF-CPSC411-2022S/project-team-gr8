@@ -3,7 +3,7 @@
 //  Shared
 //
 //  Created by csuftitan on 2/21/22.
-//  using Patricia's tabview to test Amazon-prices and Google-Search methods
+//  using Patricia's tabview to test Amazon-prices and Google-Search methods  
 
 import SwiftUI
 
