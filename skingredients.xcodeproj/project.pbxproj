@@ -18,11 +18,6 @@
 		7A43903027C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43903127C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43904327C4667E00121492 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7A43904227C4667E00121492 /* .gitignore */; };
-		7A4A6AD927D9734000336D9A /* ProductDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A6AD827D9734000336D9A /* ProductDatabase.swift */; };
-		7A4A6ADA27D9734000336D9A /* ProductDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A6AD827D9734000336D9A /* ProductDatabase.swift */; };
-		7A4A6ADC27D9748900336D9A /* AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A6ADB27D9748900336D9A /* AmazonPrices.swift */; };
-		7A4A6ADD27D9748900336D9A /* AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A6ADB27D9748900336D9A /* AmazonPrices.swift */; };
-		7A4A6AE127D9A09A00336D9A /* Tests_AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A6AE027D9A09A00336D9A /* Tests_AmazonPrices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +51,6 @@
 		7A43902827C4592300121492 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		7A43902A27C4592300121492 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		7A43904227C4667E00121492 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		7A4A6AD827D9734000336D9A /* ProductDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDatabase.swift; sourceTree = "<group>"; };
-		7A4A6ADB27D9748900336D9A /* AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPrices.swift; sourceTree = "<group>"; };
-		7A4A6AE027D9A09A00336D9A /* Tests_AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_AmazonPrices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +103,6 @@
 				7A43900427C4592000121492 /* skingredientsApp.swift */,
 				7A43900527C4592000121492 /* ContentView.swift */,
 				7A43900627C4592300121492 /* Assets.xcassets */,
-				7A4A6AD827D9734000336D9A /* ProductDatabase.swift */,
-				7A4A6ADB27D9748900336D9A /* AmazonPrices.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -141,7 +131,6 @@
 			children = (
 				7A43901C27C4592300121492 /* Tests_iOS.swift */,
 				7A43901E27C4592300121492 /* Tests_iOSLaunchTests.swift */,
-				7A4A6AE027D9A09A00336D9A /* Tests_AmazonPrices.swift */,
 			);
 			path = "Tests iOS";
 			sourceTree = "<group>";
@@ -314,8 +303,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A4A6AD927D9734000336D9A /* ProductDatabase.swift in Sources */,
-				7A4A6ADC27D9748900336D9A /* AmazonPrices.swift in Sources */,
 				7A43902E27C4592300121492 /* ContentView.swift in Sources */,
 				7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */,
 			);
@@ -325,8 +312,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A4A6ADA27D9734000336D9A /* ProductDatabase.swift in Sources */,
-				7A4A6ADD27D9748900336D9A /* AmazonPrices.swift in Sources */,
 				7A43902F27C4592300121492 /* ContentView.swift in Sources */,
 				7A43902D27C4592300121492 /* skingredientsApp.swift in Sources */,
 			);
@@ -336,7 +321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A4A6AE127D9A09A00336D9A /* Tests_AmazonPrices.swift in Sources */,
 				7A43901F27C4592300121492 /* Tests_iOSLaunchTests.swift in Sources */,
 				7A43901D27C4592300121492 /* Tests_iOS.swift in Sources */,
 			);
