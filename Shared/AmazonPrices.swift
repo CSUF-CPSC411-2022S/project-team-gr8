@@ -8,7 +8,7 @@
  import Foundation
  import SwiftUI
  
- 
+
 class AmazonPrices {
 //TODO:
     // modify the following methods in order to search for a specific Item
@@ -19,7 +19,6 @@ class AmazonPrices {
     // find a way around the UI error when using classes
     func AmazonPrices(_item: String){
         // not working yet
-        
         if let url = URL(string: "https://www.amazon.com/" + _item){
             UIApplication.shared.open(url)
         }

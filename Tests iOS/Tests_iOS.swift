@@ -38,5 +38,5 @@ class Tests_iOS: XCTestCase {
                 XCUIApplication().launch()
             }
         }
-    } 
+    }
 }
