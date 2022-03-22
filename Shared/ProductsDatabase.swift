@@ -9,7 +9,7 @@ import Foundation
 
 class ProductsDatabase: ObservableObject {
     let url = "https://skincare-api.herokuapp.com/products"
-    @Published var items = [MyResult]()
+    @Published var items: [MyResult] = []
 
     func getAllData() {
         guard let url = URL(string: self.url) else {return}
@@ -17,9 +17,10 @@ class ProductsDatabase: ObservableObject {
         URLSession.shared.dataTask(with: url) { data, response, error in
             do {
                 if let data = data {
-                    let result = try JSONDecoder().decode([MyResult].self, from: data)
+                    var result = try JSONDecoder().decode([MyResult].self, from: data)
                     
                     DispatchQueue.main.async{
+                        self.capitalizeNames(of: &result)
                         self.items = result
                     }
                 }
@@ -33,6 +34,15 @@ class ProductsDatabase: ObservableObject {
         }.resume()
     }
     
+    func capitalizeNames(of arr: inout [MyResult]) {
+        for index in arr.indices {
+            arr[index].brand = arr[index].brand.capitalized
+            arr[index].name = arr[index].name.capitalized
+            for ingred_index in arr[index].ingredient_list.indices {
+              arr[index].ingredient_list[ingred_index] = arr[index].ingredient_list[ingred_index].capitalized
+            }
+        }
+    }
     // TODO: Filter the data based on a keyword. We have a few options here.
     // 1. Locally sort out the items in items array. This might be costly for devices because
     //    of how many items there are.
@@ -41,9 +51,9 @@ class ProductsDatabase: ObservableObject {
     
 }
 
-struct MyResult: Decodable {
-    let id: Int
-    let brand: String
-    let name: String
-    let ingredient_list: [String]
+struct MyResult: Decodable, Identifiable {
+    var id: Int
+    var brand: String
+    var name: String
+    var ingredient_list: [String]
 }
