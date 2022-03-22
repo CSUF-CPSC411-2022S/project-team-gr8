@@ -1,9 +1,8 @@
 //
-//  tabView.swift
+//  TabView.swift
 //  skingredients (iOS)
 //
 //  Created by csuftitan on 3/10/22.
-//
 
 import Foundation
 import SwiftUI
@@ -17,6 +16,7 @@ class TabView : ObservableObject {
    
 }
 
+// Creates a FullScreenModal View for the AR Search.
 struct FullScreenModalView : View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var tV = TabView()
@@ -48,6 +48,7 @@ struct FullScreenModalView : View {
     
 }
 
+// Creates how the database is presented.
 struct databaseView : View {
     @ObservedObject var db = ProductsDatabase()
     
@@ -78,13 +79,54 @@ struct databaseView : View {
         }.onAppear(perform: {
             db.getAllData()
         }).navigationTitle("SkinGredients")
+
     }
 }
 
-struct buttonActions : View {
+// Creates and Controls each tab in the navigation. 
+struct switchView : View {
     @ObservedObject var tV = TabView()
     
-    var body : some View {
+    var body: some View {
+        ZStack {
+            Spacer() // Needed for fullScreenCover to work
+                .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init)
+            
+            switch tV.selectedIndex {
+            case 0:
+                NavigationView {
+                    // Call databaseView to display database display format
+                    databaseView()
+                }
+            case 1:
+            // AR View
+                NavigationView {
+                    Text("AR Search")
+                        .navigationTitle("AR Search")
+                }
+            case 2:
+            // Search Text View
+                NavigationView {
+                    ScrollView{
+                        Text("Insert Search Bar")
+                            .italic()
+                            
+                    }
+                    .navigationTitle("Text Search")
+                }
+            default:
+                NavigationView{
+                    Text("Remaining Tabs")
+                }
+            } // Switch statement
+            
+        } // ZStack
+        
+        // Divider to separate Content and Nav Bar
+        Divider()
+            .padding(.bottom, 8)
+        
+        // Setting up the 3 control buttons.
         HStack {
             ForEach(0..<3) { num in
                 Button(action: {
@@ -115,5 +157,6 @@ struct buttonActions : View {
                 }) // Button
             } // ForEach
         } // HStack
-    } // var body : some View
-} // buttonActions : View
+        
+    } // View
+} // struct switchView : View
