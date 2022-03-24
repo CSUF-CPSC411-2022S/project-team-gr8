@@ -57,29 +57,34 @@ struct databaseView : View {
             Text("Welcome to SkinGredients!")
                 .font(.system(size: 20, weight: .semibold))
                 .foregroundColor(.orange)
+            ListProducts()
+        }.onAppear(perform: {
+            db.getAllData()
+        }).navigationTitle("SkinGredients").environmentObject(db)
+
+    }
+}
+
+struct ListProducts: View {
+    @EnvironmentObject var db: ProductsDatabase
+    var width_titles: CGFloat = 100
+    var body: some View {
+        VStack {
             List(db.items, id: \.id) { item in
                 HStack {
-                    Text("DB ID: ").bold()
-                    Text(String(item.id))
-                }
-                HStack {
-                    Text("Brand: ").bold()
+                    Text("Brand: ").bold().frame(width: self.width_titles)
                     Text(item.brand)
                 }
                 HStack {
-                    Text("Product: ").bold()
+                    Text("Product: ").bold().frame(width: self.width_titles)
                     Text(item.name)
                 }
-                HStack {
-                    Text("Ingredients: ").bold()
+                HStack(alignment: .top) {
+                    Text("Ingredients: ").bold().frame(width: self.width_titles)
                     Text(item.ingredient_list.joined(separator: ", "))
                 }
             }
-            
-        }.onAppear(perform: {
-            db.getAllData()
-        }).navigationTitle("SkinGredients")
-
+        }
     }
 }
 
