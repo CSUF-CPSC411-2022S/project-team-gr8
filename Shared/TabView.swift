@@ -64,12 +64,25 @@ struct databaseView : View {
 
     }
 }
+struct ActivityIndicator: UIViewRepresentable {
 
+    typealias UIViewType = UIActivityIndicatorView
+    
+    let style: UIActivityIndicatorView.Style
+
+    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> ActivityIndicator.UIViewType {
+        return UIActivityIndicatorView(style: style)
+    }
+
+    func updateUIView(_ uiView: ActivityIndicator.UIViewType, context: UIViewRepresentableContext<ActivityIndicator>) {
+        uiView.startAnimating()
+    }
+}
 struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
     var body: some View {
-        VStack {
+        ZStack {
             List(db.items, id: \.id) { item in
                 HStack {
                     Text("Brand: ").bold().frame(width: self.width_titles)
@@ -82,6 +95,11 @@ struct ListProducts: View {
                 HStack(alignment: .top) {
                     Text("Ingredients: ").bold().frame(width: self.width_titles)
                     Text(item.ingredient_list.joined(separator: ", "))
+                }
+            }
+            if (db.loading){
+                VStack {
+                    ActivityIndicator(style: .large)
                 }
             }
         }
