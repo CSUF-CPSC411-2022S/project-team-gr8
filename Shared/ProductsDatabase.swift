@@ -10,8 +10,9 @@ import Foundation
 class ProductsDatabase: ObservableObject {
     let url = "https://skincare-api.herokuapp.com/products"
     @Published var items = [MyResult]()
-
+    @Published var loading = true
     func getAllData() {
+        self.loading = true
         guard let url = URL(string: self.url) else {return}
         
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -21,6 +22,7 @@ class ProductsDatabase: ObservableObject {
                     self.capitalizeNames(of: &result)
                     DispatchQueue.main.async{
                         self.items = result
+                        self.loading = false
                     }
                 }
                 else {
