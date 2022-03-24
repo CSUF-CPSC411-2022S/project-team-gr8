@@ -7,31 +7,43 @@
 
 import Foundation
 import XCTest
+import skingredients
+
 
 
 class Tests_AmazonPrices: XCTestCase {
     
       
-    func testAmazon() { 
+    func testAmazonSearchAlgorithm() {
         // TODO:
-        // tests for the application being able to access to www.amazon.com
+        // tests the logic to create a url that accesses an amazion search for a specific item
+        let test_string = "https://www.amazon.com/s?k=batman+poster+"
+        let temp = "batman poster "
+        let plus = temp.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        let url = "https://www.amazon.com/s?k=" + plus
+        XCTAssertEqual(test_string, url)
     }
     
-    func testGoogle() {
+    func testGoogleSearchAlgorithm() {
         //TODO:
-        // tests for the application being able to access www.google.com
+        // tests the logic to create a url that accesses a google search for a specific item
+        let test_string = "https://www.google.com/search?q=batman+poster+"
+        let temp = "batman poster "
+        let plus = temp.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        let url = "https://www.google.com/search?q=" + plus
+        XCTAssertEqual(test_string, url)
     }
     
-    func specificItemAmazon() {
+    func testAmazonlink() {
         //TODO:
         // tests for the application being able to search on amazon for requested item
-        
+        // need help on this one
     }
     
-    func specificItemGoogle() {
+    func testGooglelink() {
         //TODO:
         // tests for the application being able to search for item on google
-        
+        // need help on this one too
     }
     
     
