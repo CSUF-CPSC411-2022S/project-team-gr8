@@ -11,6 +11,12 @@ class ProductsDatabase: ObservableObject {
     let url = "https://skincare-api.herokuapp.com/products"
     @Published var items = [MyResult]()
     @Published var loading = true
+    @Published var displayedItems = [MyResult]()
+    
+    init() {
+        getAllData()
+    }
+    
     func getAllData() {
         self.loading = true
         guard let url = URL(string: self.url) else {return}
@@ -22,6 +28,7 @@ class ProductsDatabase: ObservableObject {
                     self.capitalizeNames(of: &result)
                     DispatchQueue.main.async{
                         self.items = result
+                        self.displayedItems = result
                         self.loading = false
                     }
                 }
@@ -49,7 +56,17 @@ class ProductsDatabase: ObservableObject {
     //    of how many items there are.
     // 2. Create a method and another data member or something that will make a call to the API using
     //    the "Like" GET call. Check out the Skincare github for info on that.
-    
+    func filterData(searchString: String) {
+       var filteredItems = [MyResult]()
+       for item in items {
+           for ingredient in item.ingredient_list {
+               if searchString.lowercased() == ingredient.lowercased() {
+                   filteredItems.append(item)
+               }
+            }
+        }
+        displayedItems = filteredItems
+    }
 }
 
 struct MyResult: Decodable {

@@ -50,18 +50,41 @@ struct FullScreenModalView : View {
 
 // Creates how the database is presented.
 struct databaseView : View {
+    @State private var input = ""
     @ObservedObject var db = ProductsDatabase()
+    @Environment(\.dismissSearch) var dismissSearch
     
     var body : some View {
         VStack {
+            ChildView()
             Text("Welcome to SkinGredients!")
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.orange)
-            ListProducts()
+            Button(action: {
+                db.filterData(searchString: input)
+            }) {
+                Text("Search")
+            }
+            List(db.displayedItems, id: \.id) { item in
+                HStack {
+                    Text("DB ID: ").bold()
+                    Text(String(item.id))
+                }
+                HStack {
+                    Text("Brand: ").bold()
+                    Text(item.brand)
+                }
+                HStack {
+                    Text("Product: ").bold()
+                    Text(item.name)
+                }
+                HStack {
+                    Text("Ingredients: ").bold()
+                    Text(item.ingredient_list.joined(separator: ", "))
+                }
+            }
         }.onAppear(perform: {
             db.getAllData()
-        }).navigationTitle("SkinGredients").environmentObject(db)
-
+        }).navigationTitle("SkinGredients") .environmentObject(db)
+            .searchable(text: $input,prompt: "Search by Keyword")
     }
 }
 struct ActivityIndicator: UIViewRepresentable {
@@ -183,3 +206,19 @@ struct switchView : View {
         
     } // View
 } // struct switchView : View
+
+
+struct ChildView : View {
+    @Environment(\.isSearching) var isSearching
+    @EnvironmentObject var db : ProductsDatabase
+    
+    var body: some View {
+        Text("")
+            .onChange(of: isSearching) { newValue in
+                if !newValue {
+                    print("Searching cancelled")
+                    db.displayedItems = db.items
+                }
+            }
+    }
+}
