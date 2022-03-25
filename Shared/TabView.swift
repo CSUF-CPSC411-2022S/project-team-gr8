@@ -63,24 +63,7 @@ struct databaseView : View {
             }) {
                 Text("Search")
             }
-            List(db.displayedItems, id: \.id) { item in
-                HStack {
-                    Text("DB ID: ").bold()
-                    Text(String(item.id))
-                }
-                HStack {
-                    Text("Brand: ").bold()
-                    Text(item.brand)
-                }
-                HStack {
-                    Text("Product: ").bold()
-                    Text(item.name)
-                }
-                HStack {
-                    Text("Ingredients: ").bold()
-                    Text(item.ingredient_list.joined(separator: ", "))
-                }
-            }
+            ListProducts()
         }.onAppear(perform: {
             db.getAllData()
         }).navigationTitle("SkinGredients") .environmentObject(db)
@@ -106,7 +89,7 @@ struct ListProducts: View {
     var width_titles: CGFloat = 100
     var body: some View {
         ZStack {
-            List(db.items, id: \.id) { item in
+            List(db.displayedItems, id: \.id) { item in
                 HStack {
                     Text("Brand: ").bold().frame(width: self.width_titles)
                     Text(item.brand)
