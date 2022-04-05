@@ -50,7 +50,8 @@ struct FullScreenModalView : View {
 
 // Creates how the database is presented.
 struct databaseView : View {
-    @State private var input = ""
+    // @State private var input = ""
+    @SceneStorage("input") var input: String = "" // SceneStorage on the search textbox
     @ObservedObject var db = ProductsDatabase()
     @Environment(\.dismissSearch) var dismissSearch
     
@@ -58,16 +59,20 @@ struct databaseView : View {
         VStack {
             ChildView()
             Text("Welcome to SkinGredients!")
+            
             Button(action: {
                 db.filterData(searchString: input)
             }) {
                 Text("Search")
+                    .foregroundColor(.orange)
+                    .font(.system(size: 20, weight: .semibold))
             }
             ListProducts()
         }.onAppear(perform: {
             db.getAllData()
         }).navigationTitle("SkinGredients") .environmentObject(db)
             .searchable(text: $input,prompt: "Search by Keyword")
+            
     }
 }
 struct ActivityIndicator: UIViewRepresentable {

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @State var data: String = ""
-    
     var body: some View {
         // Tab view, Ref: https://www.youtube.com/watch?v=9IVLFlyaiq4
         VStack(spacing: 0) {
