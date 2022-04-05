@@ -69,7 +69,7 @@ class ProductsDatabase: ObservableObject {
     }
 }
 
-struct MyResult: Decodable {
+struct MyResult: Decodable, Equatable {
     let id: Int
     var brand: String
     var name: String
