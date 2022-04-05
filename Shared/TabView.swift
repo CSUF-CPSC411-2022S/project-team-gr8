@@ -81,6 +81,7 @@ struct ActivityIndicator: UIViewRepresentable {
 struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
+    var ap = AmazonPrices()
     var body: some View {
         ZStack {
             List(db.items, id: \.id) { item in
@@ -96,6 +97,24 @@ struct ListProducts: View {
                     Text("Ingredients: ").bold().frame(width: self.width_titles)
                     Text(item.ingredient_list.joined(separator: ", "))
                 }
+                HStack{
+                    // button for amazon
+                    Button(action: {ap.AmazonPrices(_brand: item.brand,_item: item.name)}){
+                        Text("Click for Amazon Prices")
+                    }.buttonStyle(PlainButtonStyle())
+                }
+                HStack{
+                    // button for brand shopping
+                    Button(action: {ap.Amazonbrand(_brand: item.brand)}){
+                        Text("Shop for Same Brand")
+                    }.buttonStyle(PlainButtonStyle())
+                }
+                HStack{
+                    // button for more info (google search)
+                    Button(action: {ap.GSearch(_brand: item.brand, _item: item.name)}){
+                        Text("More Information")
+                    }.buttonStyle(PlainButtonStyle())
+                }
             }
             if (db.loading){
                 VStack {
@@ -106,7 +125,7 @@ struct ListProducts: View {
     }
 }
 
-// Creates and Controls each tab in the navigation. 
+// Creates and Controls each tab in the navigation.
 struct switchView : View {
     @ObservedObject var tV = TabView()
     

@@ -18,6 +18,8 @@
 		7A43903027C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43903127C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43904327C4667E00121492 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7A43904227C4667E00121492 /* .gitignore */; };
+		7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */; };
+		7A61FB1927FCD65E00672CB7 /* Tests_AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */; };
 		7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		7A43902827C4592300121492 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		7A43902A27C4592300121492 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		7A43904227C4667E00121492 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPrices.swift; sourceTree = "<group>"; };
+		7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_AmazonPrices.swift; sourceTree = "<group>"; };
 		7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +112,7 @@
 				7A43900627C4592300121492 /* Assets.xcassets */,
 				7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */,
 				7A0BD7C427DAACF300056C8C /* TabView.swift */,
+				7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			children = (
 				7A43901C27C4592300121492 /* Tests_iOS.swift */,
 				7A43901E27C4592300121492 /* Tests_iOSLaunchTests.swift */,
+				7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */,
 			);
 			path = "Tests iOS";
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A43902E27C4592300121492 /* ContentView.swift in Sources */,
+				7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */,
 				7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */,
 				7A0BD7C527DAACF300056C8C /* TabView.swift in Sources */,
 				7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */,
@@ -327,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A61FB1927FCD65E00672CB7 /* Tests_AmazonPrices.swift in Sources */,
 				7A43901F27C4592300121492 /* Tests_iOSLaunchTests.swift in Sources */,
 				7A43901D27C4592300121492 /* Tests_iOS.swift in Sources */,
 			);
