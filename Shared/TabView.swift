@@ -34,9 +34,10 @@ struct FullScreenModalView : View {
              })
             
             NavigationView {
+                    ARViewContainer().edgesIgnoringSafeArea(.all)
                     ScrollView {
-                        Text("Insert AR Content")
-                            .italic()
+//                        Text("Insert AR Content")
+//                            .italic()
                     }
                     .navigationTitle("AR Search")
             }
@@ -80,7 +81,7 @@ struct ActivityIndicator: UIViewRepresentable {
         return UIActivityIndicatorView(style: style)
     }
 
-    func updateUIView(_ uiView: ActivityIndicator.UIViewType, context: UIViewRepresentableContext<ActivityIndicator>) {
+    func updateUIView(_ uiView: ActivityIndicator.UIViewType, context: UIViewRepresentableContext<ActivityIndicator>){
         uiView.startAnimating()
     }
 }
@@ -130,6 +131,7 @@ struct switchView : View {
             case 1:
             // AR View
                 NavigationView {
+                    ARViewContainer().edgesIgnoringSafeArea(.all)
                     Text("AR Search")
                         .navigationTitle("AR Search")
                 }
