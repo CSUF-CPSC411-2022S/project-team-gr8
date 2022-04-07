@@ -42,40 +42,40 @@ class Tests_iOS: XCTestCase {
 //    }
     
     func testCapitalizeIngredients() {
-        var initial: [MyResult] = [
-            MyResult(id:1,
-                     brand:"amorepacific",
-                     name:"age spot brightening pen",
-                     ingredient_list:["carbomer"]),
-            
-            MyResult(id:2,
-                     brand:"amorepacific",
-                     name: "all day balancing care serum",
-                     ingredient_list: ["camellia sinensis leaf water"]),
-            
-            MyResult(id:3,
-                     brand:"amorepacific",
-                     name: "bio-enzyme refining complex",
-                     ingredient_list: ["panax ginseng root extract"])
-        ]
-        let p: ProductsDatabase = ProductsDatabase()
-        p.capitalizeNames(of: &initial)
-        let expected: [MyResult] = [
-            MyResult(id:1,
-                     brand:"Amorepacific",
-                     name:"Age Spot Brightening Pen",
-                     ingredient_list:["Carbomer"]),
-            
-            MyResult(id:2,
-                     brand:"Amorepacific",
-                     name: "All Day Balancing Care Serum",
-                     ingredient_list: ["Camellia Sinensis Leaf Water"]),
-            
-            MyResult(id:3,
-                     brand:"Amorepacific",
-                     name: "Bio-enzyme Refining Complex",
-                     ingredient_list: ["Panax Ginseng Root Extract"])
-        ]
+//        var initial: [MyResult] = [
+//            MyResult(id:1,
+//                     brand:"amorepacific",
+//                     name:"age spot brightening pen",
+//                     ingredient_list:["carbomer"]),
+//            
+//            MyResult(id:2,
+//                     brand:"amorepacific",
+//                     name: "all day balancing care serum",
+//                     ingredient_list: ["camellia sinensis leaf water"]),
+//            
+//            MyResult(id:3,
+//                     brand:"amorepacific",
+//                     name: "bio-enzyme refining complex",
+//                     ingredient_list: ["panax ginseng root extract"])
+//        ]
+//        let p: ProductsDatabase = ProductsDatabase()
+//        p.capitalizeNames(of: &initial)
+//        let expected: [MyResult] = [
+//            MyResult(id:1,
+//                     brand:"Amorepacific",
+//                     name:"Age Spot Brightening Pen",
+//                     ingredient_list:["Carbomer"]),
+//            
+//            MyResult(id:2,
+//                     brand:"Amorepacific",
+//                     name: "All Day Balancing Care Serum",
+//                     ingredient_list: ["Camellia Sinensis Leaf Water"]),
+//            
+//            MyResult(id:3,
+//                     brand:"Amorepacific",
+//                     name: "Bio-enzyme Refining Complex",
+//                     ingredient_list: ["Panax Ginseng Root Extract"])
+//        ]
 //        for i in 1...initial.endIndex {
 //            XCTAssertEqual(initial[i].brand, expected[i].brand)
 //            XCTAssertEqual(initial[i].name, expected[i].name)
