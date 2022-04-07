@@ -62,7 +62,7 @@ class ProductsDatabase: ObservableObject {
         }
         var filteredItems = [MyResult]()
         for item in items {
-            var all_str = item.brand.lowercased() + " " + item.name.lowercased()
+            var all_str = item.brand.lowercased() + " " + item.name.lowercased() + " "
             all_str += item.ingredient_list.joined(separator: " ")
             if all_str.contains(searchString.lowercased()){
                 filteredItems.append(item)
