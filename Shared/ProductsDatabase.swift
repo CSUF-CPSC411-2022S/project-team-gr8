@@ -57,19 +57,22 @@ class ProductsDatabase: ObservableObject {
     // 2. Create a method and another data member or something that will make a call to the API using
     //    the "Like" GET call. Check out the Skincare github for info on that.
     func filterData(searchString: String) {
-       var filteredItems = [MyResult]()
-       for item in items {
-           for ingredient in item.ingredient_list {
-               if searchString.lowercased() == ingredient.lowercased() {
-                   filteredItems.append(item)
-               }
+        if searchString.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return
+        }
+        var filteredItems = [MyResult]()
+        for item in items {
+            var all_str = item.brand.lowercased() + " " + item.name.lowercased()
+            all_str += item.ingredient_list.joined(separator: " ")
+            if all_str.contains(searchString.lowercased()){
+                filteredItems.append(item)
             }
         }
         displayedItems = filteredItems
     }
 }
 
-struct MyResult: Decodable {
+struct MyResult: Decodable, Equatable {
     let id: Int
     var brand: String
     var name: String

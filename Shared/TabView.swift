@@ -48,33 +48,6 @@ struct FullScreenModalView : View {
     
 }
 
-// Creates how the database is presented.
-struct databaseView : View {
-    // @State private var input = ""
-    @SceneStorage("input") var input: String = "" // SceneStorage on the search textbox
-    @ObservedObject var db = ProductsDatabase()
-    @Environment(\.dismissSearch) var dismissSearch
-    
-    var body : some View {
-        VStack {
-            ChildView()
-            Text("Welcome to SkinGredients!")
-            
-            Button(action: {
-                db.filterData(searchString: input)
-            }) {
-                Text("Search")
-                    .foregroundColor(.orange)
-                    .font(.system(size: 20, weight: .semibold))
-            }
-            ListProducts()
-        }.onAppear(perform: {
-            db.getAllData()
-        }).navigationTitle("SkinGredients") .environmentObject(db)
-            .searchable(text: $input,prompt: "Search by Keyword")
-            
-    }
-}
 struct ActivityIndicator: UIViewRepresentable {
 
     typealias UIViewType = UIActivityIndicatorView
@@ -87,52 +60,6 @@ struct ActivityIndicator: UIViewRepresentable {
 
     func updateUIView(_ uiView: ActivityIndicator.UIViewType, context: UIViewRepresentableContext<ActivityIndicator>) {
         uiView.startAnimating()
-    }
-}
-struct ListProducts: View {
-    @EnvironmentObject var db: ProductsDatabase
-    var width_titles: CGFloat = 100
-    var ap = AmazonPrices()
-    var body: some View {
-        ZStack {
-            List(db.displayedItems, id: \.id) { item in
-                HStack {
-                    Text("Brand: ").bold().frame(width: self.width_titles)
-                    Text(item.brand)
-                }
-                HStack {
-                    Text("Product: ").bold().frame(width: self.width_titles)
-                    Text(item.name)
-                }
-                HStack(alignment: .top) {
-                    Text("Ingredients: ").bold().frame(width: self.width_titles)
-                    Text(item.ingredient_list.joined(separator: ", "))
-                }
-                HStack{
-                    // button for amazon
-                    Button(action: {ap.AmazonPrices(_brand: item.brand,_item: item.name)}){
-                        Text("Click for Amazon Prices")
-                    }.buttonStyle(PlainButtonStyle())
-                }
-                HStack{
-                    // button for brand shopping
-                    Button(action: {ap.Amazonbrand(_brand: item.brand)}){
-                        Text("Shop for Same Brand")
-                    }.buttonStyle(PlainButtonStyle())
-                }
-                HStack{
-                    // button for more info (google search)
-                    Button(action: {ap.GSearch(_brand: item.brand, _item: item.name)}){
-                        Text("More Information")
-                    }.buttonStyle(PlainButtonStyle())
-                }
-            }
-            if (db.loading){
-                VStack {
-                    ActivityIndicator(style: .large)
-                }
-            }
-        }
     }
 }
 
@@ -213,19 +140,3 @@ struct switchView : View {
         
     } // View
 } // struct switchView : View
-
-
-struct ChildView : View {
-    @Environment(\.isSearching) var isSearching
-    @EnvironmentObject var db : ProductsDatabase
-    
-    var body: some View {
-        Text("")
-            .onChange(of: isSearching) { newValue in
-                if !newValue {
-                    print("Searching cancelled")
-                    db.displayedItems = db.items
-                }
-            }
-    }
-}

@@ -21,6 +21,7 @@
 		7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */; };
 		7A61FB1927FCD65E00672CB7 /* Tests_AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */; };
 		7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */; };
+		7AEFA6F827FF71BF001B1506 /* ListProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFA6F727FF71BF001B1506 /* ListProducts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPrices.swift; sourceTree = "<group>"; };
 		7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_AmazonPrices.swift; sourceTree = "<group>"; };
 		7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
+		7AEFA6F727FF71BF001B1506 /* ListProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProducts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */,
 				7A0BD7C427DAACF300056C8C /* TabView.swift */,
 				7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */,
+				7AEFA6F727FF71BF001B1506 /* ListProducts.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */,
 				7A0BD7C527DAACF300056C8C /* TabView.swift in Sources */,
 				7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */,
+				7AEFA6F827FF71BF001B1506 /* ListProducts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ class AmazonPrices {
 
    func AmazonPrices(_brand: String, _item: String){
        // a search for an item in amazon
-       let temp = _brand + _item
+       let temp = _brand + " " + _item
        let plus = temp.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
        
        if let url = URL(string: "https://www.amazon.com/s?k=" + plus){
@@ -34,7 +34,7 @@ class AmazonPrices {
    func GSearch(_brand: String, _item: String){
        // it works
        // need to add brand with item for more info
-       let temp = _brand + _item
+       let temp = _brand + " " + _item
        let plus = temp.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
        if let url = URL(string: "https://www.google.com/search?q=" + plus){
            UIApplication.shared.open(url)
