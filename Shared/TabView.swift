@@ -12,7 +12,7 @@ class TabView : ObservableObject {
     @Published var isPresented = false //shouldShowModal
     
     // House = 1, Magnifyingglass AR = 2 , Magnifyingglass Text = 3,
-    let tabBarImagesNames = ["house", "1.magnifyingglass.ar", "text.magnifyingglass"]
+    let tabBarImagesNames = ["house", "1.magnifyingglass.ar"]
    
 }
 
@@ -84,16 +84,6 @@ struct switchView : View {
                     Text("AR Search")
                         .navigationTitle("AR Search")
                 }
-            case 2:
-            // Search Text View
-                NavigationView {
-                    ScrollView{
-                        Text("Insert Search Bar")
-                            .italic()
-                            
-                    }
-                    .navigationTitle("Text Search")
-                }
             default:
                 NavigationView{
                     Text("Remaining Tabs")
@@ -108,7 +98,7 @@ struct switchView : View {
         
         // Setting up the 3 control buttons.
         HStack {
-            ForEach(0..<3) { num in
+            ForEach(0..<2) { num in
                 Button(action: {
                     // Actions for the buttons
                     if num == 1 {                   // AR Search Button
