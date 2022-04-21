@@ -34,6 +34,7 @@ struct FullScreenModalView : View {
              })
             
             NavigationView {
+                ARViewContainer()
                     ScrollView {
                         Text("Insert AR Content")
                             .italic()

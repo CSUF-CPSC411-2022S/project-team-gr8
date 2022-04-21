@@ -72,6 +72,7 @@
 		7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPrices.swift; sourceTree = "<group>"; };
 		7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_AmazonPrices.swift; sourceTree = "<group>"; };
 		7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
+		7AE898E42811F8D0009BD51D /* AR Session 1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 1.mov"; sourceTree = "<group>"; };
 		7AEFA6F727FF71BF001B1506 /* ListProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProducts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +127,7 @@
 		7A438FFE27C4592000121492 = {
 			isa = PBXGroup;
 			children = (
+				7AE898E42811F8D0009BD51D /* AR Session 1.mov */,
 				7A58AE992811DFAE0092899D /* skingredients--iOS--Info.plist */,
 				7A43904227C4667E00121492 /* .gitignore */,
 				7A43900327C4592000121492 /* Shared */,
@@ -289,7 +291,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					7A3CB6C12807798800ECED38 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -606,7 +608,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z97S4D8BTG;
+				DEVELOPMENT_TEAM = BQ9J2AUS2P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "skingredients--iOS--Info.plist";
@@ -639,7 +641,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z97S4D8BTG;
+				DEVELOPMENT_TEAM = BQ9J2AUS2P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "skingredients--iOS--Info.plist";
@@ -672,6 +674,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -698,6 +701,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
