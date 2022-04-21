@@ -81,8 +81,10 @@ struct switchView : View {
             case 1:
             // AR View
                 NavigationView {
-                    Text("AR Search")
-                        .navigationTitle("AR Search")
+                    VStack {
+                        Text("hello")
+                    }
+                    ARViewContainer().edgesIgnoringSafeArea(.all)
                 }
             default:
                 NavigationView{

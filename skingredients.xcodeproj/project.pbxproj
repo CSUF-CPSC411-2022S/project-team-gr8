@@ -20,6 +20,7 @@
 		7A43903027C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43903127C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43904327C4667E00121492 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7A43904227C4667E00121492 /* .gitignore */; };
+		7A58AE9B2811E0350092899D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58AE9A2811E0350092899D /* File.swift */; };
 		7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */; };
 		7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */; };
 		7AEFA6F827FF71BF001B1506 /* ListProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFA6F727FF71BF001B1506 /* ListProducts.swift */; };
@@ -66,6 +67,8 @@
 		7A43902827C4592300121492 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		7A43902A27C4592300121492 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		7A43904227C4667E00121492 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7A58AE992811DFAE0092899D /* skingredients--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "skingredients--iOS--Info.plist"; sourceTree = "<group>"; };
+		7A58AE9A2811E0350092899D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPrices.swift; sourceTree = "<group>"; };
 		7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_AmazonPrices.swift; sourceTree = "<group>"; };
 		7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		7A438FFE27C4592000121492 = {
 			isa = PBXGroup;
 			children = (
+				7A58AE992811DFAE0092899D /* skingredients--iOS--Info.plist */,
 				7A43904227C4667E00121492 /* .gitignore */,
 				7A43900327C4592000121492 /* Shared */,
 				7A43901227C4592300121492 /* macOS */,
@@ -143,6 +147,7 @@
 				7A0BD7C427DAACF300056C8C /* TabView.swift */,
 				7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */,
 				7AEFA6F727FF71BF001B1506 /* ListProducts.swift */,
+				7A58AE9A2811E0350092899D /* File.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 			files = (
 				7A43902E27C4592300121492 /* ContentView.swift in Sources */,
 				7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */,
+				7A58AE9B2811E0350092899D /* File.swift in Sources */,
 				7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */,
 				7A0BD7C527DAACF300056C8C /* TabView.swift in Sources */,
 				7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */,
@@ -603,9 +609,12 @@
 				DEVELOPMENT_TEAM = Z97S4D8BTG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "skingredients--iOS--Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app requires the use of your camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -633,9 +642,12 @@
 				DEVELOPMENT_TEAM = Z97S4D8BTG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "skingredients--iOS--Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app requires the use of your camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
