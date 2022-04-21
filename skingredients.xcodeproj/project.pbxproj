@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7A0BD7C527DAACF300056C8C /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0BD7C427DAACF300056C8C /* TabView.swift */; };
+		7A3CB6C52807798800ECED38 /* skingredientsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CB6C42807798800ECED38 /* skingredientsTests.swift */; };
+		7A3CB6CB280779E800ECED38 /* Tests_AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */; };
 		7A43901D27C4592300121492 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43901C27C4592300121492 /* Tests_iOS.swift */; };
 		7A43901F27C4592300121492 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43901E27C4592300121492 /* Tests_iOSLaunchTests.swift */; };
 		7A43902927C4592300121492 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43902827C4592300121492 /* Tests_macOS.swift */; };
@@ -19,12 +21,18 @@
 		7A43903127C4592300121492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A43900627C4592300121492 /* Assets.xcassets */; };
 		7A43904327C4667E00121492 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7A43904227C4667E00121492 /* .gitignore */; };
 		7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */; };
-		7A61FB1927FCD65E00672CB7 /* Tests_AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */; };
 		7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */; };
 		7AEFA6F827FF71BF001B1506 /* ListProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFA6F727FF71BF001B1506 /* ListProducts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7A3CB6C62807798800ECED38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A438FFF27C4592000121492 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A43900A27C4592300121492;
+			remoteInfo = "skingredients (iOS)";
+		};
 		7A43901927C4592300121492 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A438FFF27C4592000121492 /* Project object */;
@@ -43,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		7A0BD7C427DAACF300056C8C /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		7A3CB6C22807798800ECED38 /* skingredientsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skingredientsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3CB6C42807798800ECED38 /* skingredientsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skingredientsTests.swift; sourceTree = "<group>"; };
 		7A43900427C4592000121492 /* skingredientsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skingredientsApp.swift; sourceTree = "<group>"; };
 		7A43900527C4592000121492 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A43900627C4592300121492 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +73,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7A3CB6BF2807798800ECED38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A43900827C4592300121492 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A3CB6C32807798800ECED38 /* skingredientsTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */,
+				7A3CB6C42807798800ECED38 /* skingredientsTests.swift */,
+			);
+			path = skingredientsTests;
+			sourceTree = "<group>";
+		};
 		7A438FFE27C4592000121492 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +128,7 @@
 				7A43901227C4592300121492 /* macOS */,
 				7A43901B27C4592300121492 /* Tests iOS */,
 				7A43902727C4592300121492 /* Tests macOS */,
+				7A3CB6C32807798800ECED38 /* skingredientsTests */,
 				7A43900C27C4592300121492 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,6 +154,7 @@
 				7A43901127C4592300121492 /* skingredients.app */,
 				7A43901827C4592300121492 /* Tests iOS.xctest */,
 				7A43902427C4592300121492 /* Tests macOS.xctest */,
+				7A3CB6C22807798800ECED38 /* skingredientsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,7 +172,6 @@
 			children = (
 				7A43901C27C4592300121492 /* Tests_iOS.swift */,
 				7A43901E27C4592300121492 /* Tests_iOSLaunchTests.swift */,
-				7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */,
 			);
 			path = "Tests iOS";
 			sourceTree = "<group>";
@@ -161,6 +188,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7A3CB6C12807798800ECED38 /* skingredientsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A3CB6CA2807798800ECED38 /* Build configuration list for PBXNativeTarget "skingredientsTests" */;
+			buildPhases = (
+				7A3CB6BE2807798800ECED38 /* Sources */,
+				7A3CB6BF2807798800ECED38 /* Frameworks */,
+				7A3CB6C02807798800ECED38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A3CB6C72807798800ECED38 /* PBXTargetDependency */,
+			);
+			name = skingredientsTests;
+			productName = skingredientsTests;
+			productReference = 7A3CB6C22807798800ECED38 /* skingredientsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7A43900A27C4592300121492 /* skingredients (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A43903427C4592400121492 /* Build configuration list for PBXNativeTarget "skingredients (iOS)" */;
@@ -241,6 +286,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					7A3CB6C12807798800ECED38 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 7A43900A27C4592300121492;
+					};
 					7A43900A27C4592300121492 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -274,11 +323,19 @@
 				7A43901027C4592300121492 /* skingredients (macOS) */,
 				7A43901727C4592300121492 /* Tests iOS */,
 				7A43902327C4592300121492 /* Tests macOS */,
+				7A3CB6C12807798800ECED38 /* skingredientsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7A3CB6C02807798800ECED38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A43900927C4592300121492 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,6 +370,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7A3CB6BE2807798800ECED38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A3CB6C52807798800ECED38 /* skingredientsTests.swift in Sources */,
+				7A3CB6CB280779E800ECED38 /* Tests_AmazonPrices.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A43900727C4592300121492 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,7 +404,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A61FB1927FCD65E00672CB7 /* Tests_AmazonPrices.swift in Sources */,
 				7A43901F27C4592300121492 /* Tests_iOSLaunchTests.swift in Sources */,
 				7A43901D27C4592300121492 /* Tests_iOS.swift in Sources */,
 			);
@@ -356,6 +421,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7A3CB6C72807798800ECED38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A43900A27C4592300121492 /* skingredients (iOS) */;
+			targetProxy = 7A3CB6C62807798800ECED38 /* PBXContainerItemProxy */;
+		};
 		7A43901A27C4592300121492 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7A43900A27C4592300121492 /* skingredients (iOS) */;
@@ -369,6 +439,49 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		7A3CB6C82807798800ECED38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z97S4D8BTG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gr8.skingredientsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skingredients.app/skingredients";
+			};
+			name = Debug;
+		};
+		7A3CB6C92807798800ECED38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z97S4D8BTG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gr8.skingredientsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skingredients.app/skingredients";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		7A43903227C4592300121492 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -501,7 +614,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gr8.skingredients;
+				PRODUCT_BUNDLE_IDENTIFIER = gr8.skingredients2;
 				PRODUCT_NAME = skingredients;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -531,7 +644,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gr8.skingredients;
+				PRODUCT_BUNDLE_IDENTIFIER = gr8.skingredients2;
 				PRODUCT_NAME = skingredients;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -597,8 +710,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z97S4D8BTG;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -616,8 +731,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z97S4D8BTG;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -671,6 +788,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7A3CB6CA2807798800ECED38 /* Build configuration list for PBXNativeTarget "skingredientsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A3CB6C82807798800ECED38 /* Debug */,
+				7A3CB6C92807798800ECED38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7A43900227C4592000121492 /* Build configuration list for PBXProject "skingredients" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
