@@ -12,7 +12,7 @@ class TabView : ObservableObject {
     @Published var isPresented = false //shouldShowModal
     
     // House = 1, Magnifyingglass AR = 2 , Magnifyingglass Text = 3,
-    let tabBarImagesNames = ["house", "1.magnifyingglass.ar"]
+    let tabBarImagesNames = ["house", "magnifyingglass", "person.crop.circle"]
    
 }
 
@@ -22,32 +22,18 @@ struct FullScreenModalView : View {
     @StateObject var tV = TabView()
     
     var body : some View {
-        Spacer() // Needed for x button to appear
-        VStack{
-            Button(action: {tV.isPresented.toggle()}, label: {
-                 Image(systemName: "x.circle.fill")
-                     .foregroundColor(.orange)
-                     .font(.system(size: 20, weight: .bold))
-                     .onTapGesture{
-                         presentationMode.wrappedValue.dismiss()
-                     }
-             })
-            
-            NavigationView {
-                ARViewContainer()
-                    ScrollView {
-                        Text("Insert AR Content")
-                            .italic()
-                    }
-                    .navigationTitle("AR Search")
-            }
-        }
+        //Spacer() // Needed for x button to appear
+        // Call AR View
+        ARViewContainer()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
         .edgesIgnoringSafeArea(.all)
-    }
-    
-}
+        .onTapGesture{
+            presentationMode.wrappedValue.dismiss()
+        }
+        
+    } // var body: some View
+} // struct FullScreenModalView
 
 struct ActivityIndicator: UIViewRepresentable {
 
@@ -67,9 +53,12 @@ struct ActivityIndicator: UIViewRepresentable {
 // Creates and Controls each tab in the navigation.
 struct switchView : View {
     @ObservedObject var tV = TabView()
+    @AppStorage("currentPage") var currentPage = 1
     
     var body: some View {
+        
         ZStack {
+
             Spacer() // Needed for fullScreenCover to work
                 .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init)
             
@@ -87,6 +76,13 @@ struct switchView : View {
                     }
                     ARViewContainer().edgesIgnoringSafeArea(.all)
                 }
+            case 2:
+                // Brand Filter
+                NavigationView{
+                    VStack{
+                        Text("Brand")
+                    }.navigationTitle("Filter by Brand")
+                }
             default:
                 NavigationView{
                     Text("Remaining Tabs")
@@ -101,7 +97,7 @@ struct switchView : View {
         
         // Setting up the 3 control buttons.
         HStack {
-            ForEach(0..<2) { num in
+            ForEach(0..<3) { num in
                 Button(action: {
                     // Actions for the buttons
                     if num == 1 {                   // AR Search Button
