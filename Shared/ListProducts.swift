@@ -36,6 +36,35 @@ struct databaseView : View {
     }
 }
 
+struct brandsView : View {
+    @ObservedObject var db = ProductsDatabase()
+    
+    var body : some View {
+        VStack {
+            List {
+                ForEach(db.brands, id: \.self) {
+                    item in
+                    NavigationLink(destination: ListProducts().onAppear {
+                            db.filterData(searchString: item)}) {
+                        Text(item)
+                    }
+                    
+                    //Button(action: {
+                    //    db.filterData(searchString: item)
+                    //    NavigationLink(destination: ListProducts()) {
+                    //        Text("")
+                    //    }
+                    //}) {
+                    //    Text(item)
+                    //}
+                }
+            }
+        }.onAppear(perform: {
+            db.getAllData()
+        }).navigationTitle("Search by Brand") .environmentObject(db)
+    }
+}
+
 struct ChildView : View {
     @Environment(\.isSearching) var isSearching
     @EnvironmentObject var db : ProductsDatabase
@@ -54,7 +83,6 @@ struct ChildView : View {
 struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
-    
 
     
     var body: some View {

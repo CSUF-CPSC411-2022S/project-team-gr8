@@ -80,8 +80,8 @@ struct switchView : View {
                 // Brand Filter
                 NavigationView{
                     VStack{
-                        Text("Brand")
-                    }.navigationTitle("Filter by Brand")
+                        brandsView()
+                    }
                 }
             default:
                 NavigationView{
