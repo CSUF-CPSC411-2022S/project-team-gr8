@@ -12,7 +12,7 @@ import SwiftUI
 struct databaseView : View {
     // @State private var input = ""
     @SceneStorage("input") var input: String = "" // SceneStorage on the search textbox
-    @ObservedObject var db = ProductsDatabase()
+    @EnvironmentObject var db: ProductsDatabase
     @Environment(\.dismissSearch) var dismissSearch
     @State var searching = false
     
@@ -29,7 +29,7 @@ struct databaseView : View {
             }
             ListProducts()
         }.onAppear(perform: {
-            db.getAllData()
+            db.setDisplayToOriginal()
         }).navigationTitle("SkinGredients") .environmentObject(db)
             .searchable(text: $input,prompt: "Search by Keyword")
             
@@ -37,15 +37,18 @@ struct databaseView : View {
 }
 
 struct brandsView : View {
-    @ObservedObject var db = ProductsDatabase()
+    @EnvironmentObject var db: ProductsDatabase
     
     var body : some View {
         VStack {
             List {
                 ForEach(db.brands, id: \.self) {
                     item in
-                    NavigationLink(destination: ListProducts().onAppear {
-                            db.filterData(searchString: item)}) {
+                    NavigationLink(destination: ListProducts()
+//                                    .onAppear {
+//                        db.filterData(searchString: item)
+//                    }
+                    ) {
                         Text(item)
                     }
                     
@@ -59,9 +62,7 @@ struct brandsView : View {
                     //}
                 }
             }
-        }.onAppear(perform: {
-            db.getAllData()
-        }).navigationTitle("Search by Brand") .environmentObject(db)
+        }.navigationTitle("Search by Brand") .environmentObject(db)
     }
 }
 

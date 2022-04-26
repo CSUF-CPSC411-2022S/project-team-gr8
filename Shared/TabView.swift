@@ -54,6 +54,7 @@ struct ActivityIndicator: UIViewRepresentable {
 struct switchView : View {
     @ObservedObject var tV = TabView()
     @AppStorage("currentPage") var currentPage = 1
+    @ObservedObject var db = ProductsDatabase()
     
     var body: some View {
         
@@ -89,7 +90,7 @@ struct switchView : View {
                 }
             } // Switch statement
             
-        } // ZStack
+        }.environmentObject(db) // ZStack
         
         // Divider to separate Content and Nav Bar
         Divider()
