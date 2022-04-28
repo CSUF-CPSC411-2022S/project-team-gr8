@@ -45,10 +45,9 @@ struct brandsView : View {
                 ForEach(db.brands, id: \.self) {
                     item in
                     NavigationLink(destination: ListProducts()
-//                                    .onAppear {
-//                        db.filterData(searchString: item)
-//                    }
-                    ) {
+                                    .onAppear {db.filterData(searchString: item)}
+                    )
+                    {
                         Text(item)
                     }
                     
@@ -85,7 +84,6 @@ struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
 
-    
     var body: some View {
         ZStack {
             List(db.displayedItems, id: \.id) { item in
