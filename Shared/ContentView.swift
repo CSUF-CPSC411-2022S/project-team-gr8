@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var currentPage = 1
     
     var body: some View {
-        /*
+        
         if currentPage == 1 {
             WalkthroughScreen()
         }
@@ -22,12 +22,12 @@ struct ContentView: View {
                 switchView()
             }
         }
-        */
         
+        /*
         VStack{
             switchView()
         }
-        
+        */
         
     } // var body : some View
     
@@ -47,10 +47,6 @@ struct WalkthroughScreen: View {
 
             VStack(spacing: 20){
                 HStack{
-                    Text("Welcome to Skingredients!")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color("Skingredients"))
                     
                     Spacer()
                     
@@ -75,16 +71,12 @@ struct WalkthroughScreen: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                 
-                Text("Instructions")
+                Text("Welcome to Skingredients!")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(Color("Skingredients"))
+                    .foregroundColor(Color("skingredients"))
                     .padding(.top)
                 
-                Text("To search using your camera, click the magnifying glass button.")
-                    .multilineTextAlignment(.center)
-                Text("To search using text, click the home button")
-                    .multilineTextAlignment(.center)
                 
                 Spacer(minLength: 0)
             } // VStack
