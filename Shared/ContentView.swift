@@ -13,11 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         
-        if currentPage == 1 {
+        if currentPage == 2 {
             WalkthroughScreen()
         }
         
-        if currentPage == 2 {
+        if currentPage == 1 {
             VStack{
                 switchView()
             }
