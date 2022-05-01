@@ -12,7 +12,7 @@ class TabView : ObservableObject {
     @Published var isPresented = false //shouldShowModal
     
     // House = 1, Magnifyingglass AR = 2 , Magnifyingglass Text = 3,
-    let tabBarImagesNames = ["house", "1.magnifyingglass.ar"]
+    let tabBarImagesNames = ["house", "magnifyingglass", "person.crop.circle"]
    
 }
 
@@ -22,31 +22,18 @@ struct FullScreenModalView : View {
     @StateObject var tV = TabView()
     
     var body : some View {
-        Spacer() // Needed for x button to appear
-        VStack{
-            Button(action: {tV.isPresented.toggle()}, label: {
-                 Image(systemName: "x.circle.fill")
-                     .foregroundColor(.orange)
-                     .font(.system(size: 20, weight: .bold))
-                     .onTapGesture{
-                         presentationMode.wrappedValue.dismiss()
-                     }
-             })
-            
-            NavigationView {
-                    ScrollView {
-                        Text("Insert AR Content")
-                            .italic()
-                    }
-                    .navigationTitle("AR Search")
-            }
-        }
+        //Spacer() // Needed for x button to appear
+        // Call AR View
+        ARViewContainer()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
         .edgesIgnoringSafeArea(.all)
-    }
-    
-}
+        .onTapGesture{
+            presentationMode.wrappedValue.dismiss()
+        }
+        
+    } // var body: some View
+} // struct FullScreenModalView
 
 struct ActivityIndicator: UIViewRepresentable {
 
@@ -66,9 +53,13 @@ struct ActivityIndicator: UIViewRepresentable {
 // Creates and Controls each tab in the navigation.
 struct switchView : View {
     @ObservedObject var tV = TabView()
+    @AppStorage("currentPage") var currentPage = 1
+    @ObservedObject var db = ProductsDatabase()
     
     var body: some View {
+        
         ZStack {
+
             Spacer() // Needed for fullScreenCover to work
                 .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init)
             
@@ -81,8 +72,17 @@ struct switchView : View {
             case 1:
             // AR View
                 NavigationView {
-                    Text("AR Search")
-                        .navigationTitle("AR Search")
+                    VStack {
+                        Text("hello")
+                    }
+                    ARViewContainer().edgesIgnoringSafeArea(.all)
+                }
+            case 2:
+                // Brand Filter
+                NavigationView{
+                    VStack{
+                        brandsView()
+                    }
                 }
             default:
                 NavigationView{
@@ -90,7 +90,7 @@ struct switchView : View {
                 }
             } // Switch statement
             
-        } // ZStack
+        }.environmentObject(db) // ZStack
         
         // Divider to separate Content and Nav Bar
         Divider()
@@ -98,7 +98,7 @@ struct switchView : View {
         
         // Setting up the 3 control buttons.
         HStack {
-            ForEach(0..<2) { num in
+            ForEach(0..<3) { num in
                 Button(action: {
                     // Actions for the buttons
                     if num == 1 {                   // AR Search Button
@@ -116,10 +116,19 @@ struct switchView : View {
                             .font(.system(size: 35, weight: .bold))
                             .foregroundColor(.orange)
                         
-                    } else {                    // For other buttons
+                    }
+                    
+                    if num == 0 {                    // For other buttons
                         Image(systemName: tV.tabBarImagesNames[num])
                             .font(.system(size: 25, weight: .bold))
                             .foregroundColor(tV.selectedIndex == num ? Color(.black) : .init(white: 0.8))
+                    }
+                    
+                    if num == 2 {
+                        BrandsTabIcon()
+                            .stroke(lineWidth: 3)
+                            .foregroundColor(tV.selectedIndex == num ? Color(.black) : .init(white: 0.8))
+                            .frame(width: 30, height:30)
                     }
                     
                     Spacer()
@@ -130,3 +139,26 @@ struct switchView : View {
         
     } // View
 } // struct switchView : View
+
+struct BrandsTabIcon: Shape {
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: rect.maxX / 2, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 4))
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY/2))
+        path.addLine(to: CGPoint(x: rect.maxX/2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: (rect.maxY) * (3/4)))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 4))
+    
+        path.move(to: CGPoint(x: rect.maxX / 2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: (rect.maxY) * (3/4)))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY / 4))
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY/2))
+        path.move(to: CGPoint(x: 0, y: rect.maxY/4))
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: 0))
+        
+        return path
+    }
+}
