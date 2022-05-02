@@ -12,6 +12,7 @@ class ProductsDatabase: ObservableObject {
     @Published var items = [MyResult]()
     @Published var loading = true
     @Published var displayedItems = [MyResult]()
+    @Published var brands = Array<String>()
     
     init() {
         getAllData()
@@ -28,8 +29,14 @@ class ProductsDatabase: ObservableObject {
                     self.capitalizeNames(of: &result)
                     DispatchQueue.main.async{
                         self.items = result
-                        self.displayedItems = result
                         self.loading = false
+                        self.setDisplayToOriginal()
+                        for item in self.items {
+                            if !self.brands.contains(item.brand) {
+                                self.brands.append(item.brand)
+                            }
+                        }
+                        self.brands = self.brands.sorted()
                     }
                 }
                 else {
@@ -40,6 +47,10 @@ class ProductsDatabase: ObservableObject {
                 print(error)
             }
         }.resume()
+    }
+    
+    func setDisplayToOriginal() {
+        self.displayedItems = self.items
     }
     
     func capitalizeNames(of arr: inout [MyResult]) {
