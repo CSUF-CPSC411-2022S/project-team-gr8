@@ -9,18 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State var data: String = ""
-    @State var currentPage = 1
+    @AppStorage("firstView") var firstView = true
     
     var body: some View {
-        
-        if currentPage == 2 {
+        if firstView {
             WalkthroughScreen()
         }
-        
-        if currentPage == 1 {
-            VStack{
-                switchView()
-            }
+        else {
+            switchView()
         }
         
         /*
@@ -41,7 +37,7 @@ struct ContentView_Previews: PreviewProvider {
 
 // Instructions Screen
 struct WalkthroughScreen: View {
-    @AppStorage("currentPage") var currentPage = 1
+    @AppStorage("firstView") var firstView = true
     var body: some View{
         ZStack{
 
@@ -53,7 +49,7 @@ struct WalkthroughScreen: View {
                     // Done Button go to switchView
                     Button(action: {
                         withAnimation(.easeInOut){
-                            currentPage = 2
+                            firstView = false
                         }
                         
                     }, label: {
