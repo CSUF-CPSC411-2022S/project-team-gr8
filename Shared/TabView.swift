@@ -116,10 +116,19 @@ struct switchView : View {
                             .font(.system(size: 35, weight: .bold))
                             .foregroundColor(.orange)
                         
-                    } else {                    // For other buttons
+                    }
+                    
+                    if num == 0 {                    // For other buttons
                         Image(systemName: tV.tabBarImagesNames[num])
                             .font(.system(size: 25, weight: .bold))
                             .foregroundColor(tV.selectedIndex == num ? Color(.black) : .init(white: 0.8))
+                    }
+                    
+                    if num == 2 {
+                        BrandsTabIcon()
+                            .stroke(lineWidth: 3)
+                            .foregroundColor(tV.selectedIndex == num ? Color(.black) : .init(white: 0.8))
+                            .frame(width: 30, height:30)
                     }
                     
                     Spacer()
@@ -130,3 +139,26 @@ struct switchView : View {
         
     } // View
 } // struct switchView : View
+
+struct BrandsTabIcon: Shape {
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: rect.maxX / 2, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 4))
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY/2))
+        path.addLine(to: CGPoint(x: rect.maxX/2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: (rect.maxY) * (3/4)))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 4))
+    
+        path.move(to: CGPoint(x: rect.maxX / 2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: (rect.maxY) * (3/4)))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY / 4))
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY/2))
+        path.move(to: CGPoint(x: 0, y: rect.maxY/4))
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: 0))
+        
+        return path
+    }
+}
