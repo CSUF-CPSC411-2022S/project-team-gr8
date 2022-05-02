@@ -12,7 +12,7 @@ import SwiftUI
 struct databaseView : View {
     // @State private var input = ""
     @SceneStorage("input") var input: String = "" // SceneStorage on the search textbox
-    @EnvironmentObject var db: ProductsDatabase
+    @ObservedObject var db = ProductsDatabase()
     @Environment(\.dismissSearch) var dismissSearch
     @State var searching = false
     
@@ -29,7 +29,7 @@ struct databaseView : View {
             }
             ListProducts()
         }.onAppear(perform: {
-            db.setDisplayToOriginal()
+            db.getAllData()
         }).navigationTitle("SkinGredients") .environmentObject(db)
             .searchable(text: $input,prompt: "Search by Keyword")
             
@@ -84,6 +84,7 @@ struct ChildView : View {
 struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
+    
 
     
     var body: some View {
@@ -100,6 +101,7 @@ struct ListProducts: View {
         }
     }
 }
+
 struct otherButtons : View {
     var item: MyResult
     var ap = AmazonPrices()
@@ -140,6 +142,7 @@ struct otherButtons : View {
         }.listRowSeparator(.hidden)
     }
 }
+
 struct itemInfo : View {
     var item: MyResult
     

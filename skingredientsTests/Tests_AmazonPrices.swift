@@ -43,9 +43,5 @@ class Tests_AmazonPrices: XCTestCase {
         // tests for the application being able to search for item on google
         // not sure if necessary
     }
-    
-    
-    // Unit tests
-    
 }
 
