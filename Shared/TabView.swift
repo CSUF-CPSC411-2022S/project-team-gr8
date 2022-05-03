@@ -34,7 +34,6 @@ struct FullScreenModalView : View {
         }
         VStack {
             Text("hello")
-            ScanButton(text: $text, title: $title)
         }
 //
         
@@ -81,10 +80,6 @@ struct switchView : View {
                 NavigationView {
                     VStack {
                         Text("hello")
-                    }
-                   VStack {
-                        Text("hello")
-                        ScanButton(text: $text, title: $title)
                     }
 //                    ARViewContainer().edgesIgnoringSafeArea(.all)
                 }
