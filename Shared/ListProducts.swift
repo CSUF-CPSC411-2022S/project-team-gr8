@@ -119,7 +119,12 @@ struct itemInfo : View {
             HStack {
                 Spacer()
                 Text("Brand").bold()
-                Image(systemName: "person.circle")
+                Pyramid()
+                    .fill(.white)
+                    .overlay(Pyramid()
+                        .stroke(lineWidth: 1)
+                        .foregroundColor(.black))
+                    .frame(width: 20, height: 20)
                 Spacer()
             }.overlay(
                 Capsule().fill(Color.gray).frame(height: 2).offset(y: 4), alignment: .bottom).padding(5)
@@ -157,5 +162,21 @@ struct itemInfo : View {
         }.listRowSeparator(.hidden).overlay(
             Capsule().fill(Color.gray).frame(height: 2).offset(y: 4)
             , alignment: .bottom)
+    }
+}
+
+struct Pyramid: Shape {
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.maxX / 2, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 1.5)) // sides
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY / 1.5)) // sides
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY))
+        return path
+        
+        
     }
 }
