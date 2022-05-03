@@ -20,17 +20,23 @@ class TabView : ObservableObject {
 struct FullScreenModalView : View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var tV = TabView()
+    @State var text: String = ""
+    @State var title: String = ""
     
     var body : some View {
-        //Spacer() // Needed for x button to appear
+        Text("Close") // Needed for x button to appear
         // Call AR View
-        ARViewContainer()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
         .edgesIgnoringSafeArea(.all)
         .onTapGesture{
             presentationMode.wrappedValue.dismiss()
         }
+        VStack {
+            Text("hello")
+            ScanButton(text: $text, title: $title)
+        }
+//
         
     } // var body: some View
 } // struct FullScreenModalView
@@ -55,6 +61,7 @@ struct switchView : View {
     @ObservedObject var tV = TabView()
     @AppStorage("currentPage") var currentPage = 1
     @ObservedObject var db = ProductsDatabase()
+
     
     var body: some View {
         
@@ -72,10 +79,11 @@ struct switchView : View {
             case 1:
             // AR View
                 NavigationView {
-                    VStack {
-                        Text("hello")
-                    }
-                    ARViewContainer().edgesIgnoringSafeArea(.all)
+//                    VStack {
+//                        Text("hello")
+//                        ScanButton(text: $text, title: $title)
+//                    }
+//                    ARViewContainer().edgesIgnoringSafeArea(.all)
                 }
             case 2:
                 // Brand Filter
