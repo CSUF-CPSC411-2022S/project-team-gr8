@@ -45,9 +45,10 @@ struct brandsView : View {
                 ForEach(db.brands, id: \.self) {
                     item in
                     NavigationLink(destination: ListProducts()
-                                    .onAppear {db.filterData(searchString: item)}
-                    )
-                    {
+                                    .onAppear {
+                        db.filterData(searchString: item)
+                    }
+                    ) {
                         Text(item)
                     }
                     
