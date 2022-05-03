@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ProductsDatabase: ObservableObject {
-    let url = "https://skincare-api.herokuapp.com/products"
+    @AppStorage("url") var url = "https://skincare-api.herokuapp.com/products"
     @Published var items = [MyResult]()
     @Published var loading = true
     @Published var displayedItems = [MyResult]()
