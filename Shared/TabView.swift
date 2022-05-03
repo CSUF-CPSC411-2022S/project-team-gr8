@@ -34,7 +34,6 @@ struct FullScreenModalView : View {
         }
         VStack {
             Text("hello")
-            ScanButton(text: $text, title: $title)
         }
 //
         
@@ -61,8 +60,8 @@ struct switchView : View {
     @ObservedObject var tV = TabView()
     @AppStorage("currentPage") var currentPage = 1
     @ObservedObject var db = ProductsDatabase()
-
-    
+    let colors = ["home": Color.blue, "cameraSearch": Color.orange, "brandsFilter": Color.purple]
+  
     var body: some View {
         
         ZStack {
@@ -79,10 +78,9 @@ struct switchView : View {
             case 1:
             // AR View
                 NavigationView {
-//                    VStack {
-//                        Text("hello")
-//                        ScanButton(text: $text, title: $title)
-//                    }
+                    VStack {
+                        Text("hello")
+                    }
 //                    ARViewContainer().edgesIgnoringSafeArea(.all)
                 }
             case 2:
@@ -120,22 +118,21 @@ struct switchView : View {
                     
                     // Custom Button Display
                     if num == 1 {               // AR Search Button
-                        Image(systemName: tV.tabBarImagesNames[num])
-                            .font(.system(size: 35, weight: .bold))
-                            .foregroundColor(.orange)
-                        
+                        Circle()
+                            .stroke(lineWidth: 5).frame(width: 40, height: 40).foregroundColor(tV.selectedIndex == num ? .black : colors["cameraSearch"])
                     }
                     
                     if num == 0 {                    // For other buttons
-                        Image(systemName: tV.tabBarImagesNames[num])
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(tV.selectedIndex == num ? Color(.black) : .init(white: 0.8))
+                        OctacubeIcon()
+                            .stroke(lineWidth: 3)
+                            .foregroundColor(tV.selectedIndex == num ? colors["home"] : .init(white: 0.8))
+                            .frame(width: 30, height:30)
                     }
                     
                     if num == 2 {
                         BrandsTabIcon()
                             .stroke(lineWidth: 3)
-                            .foregroundColor(tV.selectedIndex == num ? Color(.black) : .init(white: 0.8))
+                            .foregroundColor(tV.selectedIndex == num ? colors["brandsFilter"] : .init(white: 0.8))
                             .frame(width: 30, height:30)
                     }
                     
@@ -148,25 +145,3 @@ struct switchView : View {
     } // View
 } // struct switchView : View
 
-struct BrandsTabIcon: Shape {
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        path.move(to: CGPoint(x: rect.maxX / 2, y: 0))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 4))
-        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY/2))
-        path.addLine(to: CGPoint(x: rect.maxX/2, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: (rect.maxY) * (3/4)))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 4))
-    
-        path.move(to: CGPoint(x: rect.maxX / 2, y: rect.maxY))
-        path.addLine(to: CGPoint(x: 0, y: (rect.maxY) * (3/4)))
-        path.addLine(to: CGPoint(x: 0, y: rect.maxY / 4))
-        path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY/2))
-        path.move(to: CGPoint(x: 0, y: rect.maxY/4))
-        path.addLine(to: CGPoint(x: rect.maxX / 2, y: 0))
-        
-        return path
-    }
-}

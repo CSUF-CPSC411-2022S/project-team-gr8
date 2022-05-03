@@ -11,6 +11,7 @@
 		7A37EF85281896CD000BD943 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37EF84281896CD000BD943 /* CameraButton.swift */; };
 		7A3CB6C52807798800ECED38 /* skingredientsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CB6C42807798800ECED38 /* skingredientsTests.swift */; };
 		7A3CB6CB280779E800ECED38 /* Tests_AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */; };
+		7A3D13642820471C00551DD4 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D13632820471C00551DD4 /* Icons.swift */; };
 		7A43901D27C4592300121492 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43901C27C4592300121492 /* Tests_iOS.swift */; };
 		7A43901F27C4592300121492 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43901E27C4592300121492 /* Tests_iOSLaunchTests.swift */; };
 		7A43902927C4592300121492 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43902827C4592300121492 /* Tests_macOS.swift */; };
@@ -56,6 +57,7 @@
 		7A37EF84281896CD000BD943 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		7A3CB6C22807798800ECED38 /* skingredientsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skingredientsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3CB6C42807798800ECED38 /* skingredientsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skingredientsTests.swift; sourceTree = "<group>"; };
+		7A3D13632820471C00551DD4 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		7A43900427C4592000121492 /* skingredientsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skingredientsApp.swift; sourceTree = "<group>"; };
 		7A43900527C4592000121492 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A43900627C4592300121492 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,7 +154,7 @@
 				7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */,
 				7AEFA6F727FF71BF001B1506 /* ListProducts.swift */,
 				7A58AE9A2811E0350092899D /* File.swift */,
-				7A37EF84281896CD000BD943 /* CameraButton.swift */,
+				7A3D13632820471C00551DD4 /* Icons.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -395,7 +397,7 @@
 			files = (
 				7A43902E27C4592300121492 /* ContentView.swift in Sources */,
 				7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */,
-				7A37EF85281896CD000BD943 /* CameraButton.swift in Sources */,
+				7A3D13642820471C00551DD4 /* Icons.swift in Sources */,
 				7A58AE9B2811E0350092899D /* File.swift in Sources */,
 				7A43902C27C4592300121492 /* skingredientsApp.swift in Sources */,
 				7A0BD7C527DAACF300056C8C /* TabView.swift in Sources */,
