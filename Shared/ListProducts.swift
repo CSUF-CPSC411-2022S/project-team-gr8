@@ -85,7 +85,6 @@ struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
 
-    
     var body: some View {
         ZStack {
             List(db.displayedItems, id: \.id) { item in

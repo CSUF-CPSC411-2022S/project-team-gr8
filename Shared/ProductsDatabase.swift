@@ -72,16 +72,21 @@ class ProductsDatabase: ObservableObject {
         if searchString.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return
         }
-        var filteredItems = [MyResult]()
-        for item in items {
-            var all_str = item.brand + " " + item.name + " "
-            all_str += item.ingredient_list.joined(separator: " ")
-            
-            if all_str.lowercased().contains(searchString.lowercased()){
-                filteredItems.append(item)
+        print(searchString)
+        loading = true
+        DispatchQueue.main.async {
+            var filteredItems = [MyResult]()
+            for item in self.items {
+                var all_str = item.brand + " " + item.name + " "
+                all_str += item.ingredient_list.joined(separator: " ")
+                
+                if all_str.lowercased().contains(searchString.lowercased()){
+                    filteredItems.append(item)
+                }
             }
+            self.displayedItems = filteredItems
+            self.loading = false
         }
-        displayedItems = filteredItems
     }
 }
 
