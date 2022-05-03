@@ -33,7 +33,7 @@ struct FullScreenModalView : View {
             presentationMode.wrappedValue.dismiss()
         }
         VStack {
-            Text("hello")
+            ScanButton(text: $text, title: $title)
         }
 //
         

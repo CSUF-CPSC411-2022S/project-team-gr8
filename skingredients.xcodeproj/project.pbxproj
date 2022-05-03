@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7A0BD7C527DAACF300056C8C /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0BD7C427DAACF300056C8C /* TabView.swift */; };
-		7A37EF85281896CD000BD943 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37EF84281896CD000BD943 /* CameraButton.swift */; };
 		7A3CB6C52807798800ECED38 /* skingredientsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CB6C42807798800ECED38 /* skingredientsTests.swift */; };
 		7A3CB6CB280779E800ECED38 /* Tests_AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1827FCD65E00672CB7 /* Tests_AmazonPrices.swift */; };
 		7A3D13642820471C00551DD4 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D13632820471C00551DD4 /* Icons.swift */; };
@@ -26,6 +25,7 @@
 		7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FB1627FCD5DF00672CB7 /* AmazonPrices.swift */; };
 		7AE7385A27CC75DC003F85AE /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */; };
 		7AEFA6F827FF71BF001B1506 /* ListProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFA6F727FF71BF001B1506 /* ListProducts.swift */; };
+		7AFE17022821CD87005A2F50 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE17012821CD87005A2F50 /* CameraButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 
 /* Begin PBXFileReference section */
 		7A0BD7C427DAACF300056C8C /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
-		7A37EF84281896CD000BD943 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		7A3CB6C22807798800ECED38 /* skingredientsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skingredientsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3CB6C42807798800ECED38 /* skingredientsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skingredientsTests.swift; sourceTree = "<group>"; };
 		7A3D13632820471C00551DD4 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		7AE7385927CC75DC003F85AE /* ProductsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
 		7AE898E42811F8D0009BD51D /* AR Session 1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 1.mov"; sourceTree = "<group>"; };
 		7AEFA6F727FF71BF001B1506 /* ListProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProducts.swift; sourceTree = "<group>"; };
+		7AFE17012821CD87005A2F50 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +146,7 @@
 		7A43900327C4592000121492 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7AFE17012821CD87005A2F50 /* CameraButton.swift */,
 				7A43900427C4592000121492 /* skingredientsApp.swift */,
 				7A43900527C4592000121492 /* ContentView.swift */,
 				7A43900627C4592300121492 /* Assets.xcassets */,
@@ -396,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A43902E27C4592300121492 /* ContentView.swift in Sources */,
+				7AFE17022821CD87005A2F50 /* CameraButton.swift in Sources */,
 				7A61FB1727FCD5DF00672CB7 /* AmazonPrices.swift in Sources */,
 				7A3D13642820471C00551DD4 /* Icons.swift in Sources */,
 				7A58AE9B2811E0350092899D /* File.swift in Sources */,
