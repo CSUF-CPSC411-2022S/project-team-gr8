@@ -121,7 +121,9 @@ struct otherButtons : View {
                 HStack{
                     Spacer()
                     Text("Shop for Same Brand")
-                    Image(systemName: "bag.fill")
+                    ShopBrandIcon()
+                        .stroke(lineWidth: 2)
+                        .frame(width: 22, height:22)
                     Spacer()
                 }
             }.buttonStyle(BorderlessButtonStyle())
@@ -185,5 +187,40 @@ struct itemInfo : View {
         }.listRowSeparator(.hidden).overlay(
             Capsule().fill(Color.gray).frame(height: 2).offset(y: 4)
             , alignment: .bottom)
+    }
+}
+
+
+struct ShopBrandIcon: Shape {
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: (rect.maxX) * 5/12, y: 0))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 7/12, y: 0))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 3/4, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 2/3, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 1/2, y: 0))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 1/3, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 1/4, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 5/12, y: 0))
+    
+        path.move(to: CGPoint(x: 0, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 5/6, y: rect.maxY))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 1/6, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY/3))
+        
+        path.move(to: CGPoint(x: 0, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 1/12, y: (rect.maxY) * 2/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 11/12, y: (rect.maxY) * 2/3))
+        
+        path.move(to: CGPoint(x: (rect.maxX) * 1/3, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 1/3, y: rect.maxY))
+
+        path.move(to: CGPoint(x: (rect.maxX) * 2/3, y: rect.maxY/3))
+        path.addLine(to: CGPoint(x: (rect.maxX) * 2/3, y: rect.maxY))
+        
+        return path
     }
 }
