@@ -19,23 +19,31 @@ class TabView : ObservableObject {
 // Creates a FullScreenModal View for the AR Search.
 struct FullScreenModalView : View {
     @Environment(\.presentationMode) var presentationMode
+    @SceneStorage("input") var input: String = ""
     @StateObject var tV = TabView()
     @State var text: String = ""
-    @State var title: String = ""
+    @EnvironmentObject var db: ProductsDatabase
+    
+    func closeModal() -> Void {
+        presentationMode.wrappedValue.dismiss()
+    }
     
     var body : some View {
-        Text("Close") // Needed for x button to appear
-        // Call AR View
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
-        .edgesIgnoringSafeArea(.all)
-        .onTapGesture{
-            presentationMode.wrappedValue.dismiss()
+        NavigationView {
+            VStack {
+                searchView(closeModal: self.closeModal).environmentObject(db)
+                ScanButton(text: $input)
+                Text("Close") // Needed for x button to appear
+                // Call AR View
+                .onTapGesture{
+                    self.closeModal()
+                }
+            }
         }
-        VStack {
-            ScanButton(text: $text, title: $title)
-        }
-//
+//        .searchable(text: $input,prompt: "Search by Keyword")
+        // put the search here (search bar and button)
+        // when the search is pressed then "dismiss" the full screen thing and search for the item ( filter db )
+        
         
     } // var body: some View
 } // struct FullScreenModalView
@@ -59,7 +67,7 @@ struct ActivityIndicator: UIViewRepresentable {
 struct switchView : View {
     @ObservedObject var tV = TabView()
     @AppStorage("currentPage") var currentPage = 1
-    @ObservedObject var db = ProductsDatabase()
+    @ObservedObject var db:ProductsDatabase = ProductsDatabase()
     let colors = ["home": Color.blue, "cameraSearch": Color.orange, "brandsFilter": Color.purple]
   
     var body: some View {
@@ -67,14 +75,12 @@ struct switchView : View {
         ZStack {
 
             Spacer() // Needed for fullScreenCover to work
-                .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init)
+                .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init).environmentObject(db)
             
             switch tV.selectedIndex {
             case 0:
-                NavigationView {
                     // Call databaseView to display database display format
                     databaseView()
-                }
             case 1:
             // AR View
                 NavigationView {

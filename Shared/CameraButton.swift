@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ScanButton: UIViewRepresentable {
   @Binding var text: String
-  @Binding var title: String
 
   func makeUIView(context: Context) -> UIButton {
     let textFromCamera = UIAction.captureTextFromCamera(
@@ -37,7 +36,6 @@ struct ScanButton: UIViewRepresentable {
     var hasText = false
     func insertText(_ text: String) {
       parent.text = text
-      parent.title = "Add \(text)"
     }
     func deleteBackward() { }
   }

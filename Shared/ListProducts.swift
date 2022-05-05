@@ -9,30 +9,46 @@ import Foundation
 import SwiftUI
 
 // Creates how the database is presented.
-struct databaseView : View {
-    // @State private var input = ""
-    @SceneStorage("input") var input: String = "" // SceneStorage on the search textbox
+
+struct searchView: View {
+    @SceneStorage("input") var input: String = ""
     @EnvironmentObject var db: ProductsDatabase
-    @Environment(\.dismissSearch) var dismissSearch
-    @State var searching = false
+    var closeModal: (()->Void)?
     
-    var body : some View {
+    var body: some View {
         VStack {
             ChildView()
             
             Button(action: {
                 db.filterData(searchString: input)
+                if let closeModal = closeModal {
+                    closeModal()
+                }
             }) {
                 Text("Search")
                     .foregroundColor(.orange)
                     .font(.system(size: 20, weight: .semibold))
             }
-            ListProducts()
-        }.onAppear(perform: {
-            db.setDisplayToOriginal()
-        }).navigationTitle("SkinGredients") .environmentObject(db)
-            .searchable(text: $input,prompt: "Search by Keyword")
-            
+        }.searchable(text: $input,prompt: "Search by Keyword")
+    }
+    
+}
+struct databaseView : View {
+    // @State private var input = ""
+     // SceneStorage on the search textbox
+    @EnvironmentObject var db: ProductsDatabase
+    @Environment(\.dismissSearch) var dismissSearch
+    @State var searching = false
+    
+    var body : some View {
+        NavigationView {
+            VStack {
+                searchView()
+                ListProducts()
+            }.onAppear(perform: {
+                db.setDisplayToOriginal()
+            }).navigationTitle("SkinGredients").environmentObject(db)
+        }
     }
 }
 
