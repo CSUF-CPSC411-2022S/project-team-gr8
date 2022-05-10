@@ -23,23 +23,24 @@ struct FullScreenModalView : View {
     @StateObject var tV = TabView()
     @State var text: String = ""
     @EnvironmentObject var db: ProductsDatabase
+    var proxy: ScrollViewProxy?
     
     func closeModal() -> Void {
         presentationMode.wrappedValue.dismiss()
     }
     
     var body : some View {
-        NavigationView {
-            VStack {
-                searchView(closeModal: self.closeModal).environmentObject(db)
-                ScanButton(text: $input)
-                Text("Close") // Needed for x button to appear
-                // Call AR View
-                .onTapGesture{
-                    self.closeModal()
+            NavigationView {
+                VStack {
+                    searchView(closeModal: self.closeModal, p: proxy).environmentObject(db)
+                    ScanButton(text: $input)
+                    Text("Close") // Needed for x button to appear
+                    // Call AR View
+                    .onTapGesture{
+                        self.closeModal()
+                    }
                 }
             }
-        }
 //        .searchable(text: $input,prompt: "Search by Keyword")
         // put the search here (search bar and button)
         // when the search is pressed then "dismiss" the full screen thing and search for the item ( filter db )
@@ -69,38 +70,39 @@ struct switchView : View {
     @AppStorage("currentPage") var currentPage = 1
     @ObservedObject var db:ProductsDatabase = ProductsDatabase()
     let colors = ["home": Color.blue, "cameraSearch": Color.orange, "brandsFilter": Color.purple]
-  
+
     var body: some View {
         
         ZStack {
-
+            ScrollViewReader { proxy in
             Spacer() // Needed for fullScreenCover to work
-                .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init).environmentObject(db)
+                    .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init).environmentObject(db)
             
-            switch tV.selectedIndex {
-            case 0:
-                    // Call databaseView to display database display format
-                    databaseView()
-            case 1:
-            // AR View
-                NavigationView {
-                    VStack {
-                        Text("hello")
-                    }
-//                    ARViewContainer().edgesIgnoringSafeArea(.all)
-                }
-            case 2:
-                // Brand Filter
-                NavigationView{
-                    VStack{
-                        brandsView()
-                    }
-                }
-            default:
-                NavigationView{
-                    Text("Remaining Tabs")
-                }
-            } // Switch statement
+                switch tV.selectedIndex {
+                    case 0:
+                            // Call databaseView to display database display format
+                    databaseView(proxy:proxy)
+                    case 1:
+                    // AR View
+                        NavigationView {
+                            VStack {
+                                Text("hello")
+                            }
+        //                    ARViewContainer().edgesIgnoringSafeArea(.all)
+                        }
+                    case 2:
+                        // Brand Filter
+                        NavigationView{
+                            VStack{
+                                brandsView()
+                            }
+                        }
+                    default:
+                        NavigationView{
+                            Text("Remaining Tabs")
+                        }
+                } // Switch statement
+            }
             
         }.environmentObject(db) // ZStack
         

@@ -14,13 +14,17 @@ struct searchView: View {
     @SceneStorage("input") var input: String = ""
     @EnvironmentObject var db: ProductsDatabase
     var closeModal: (()->Void)?
+    var p: ScrollViewProxy?
     
     var body: some View {
         VStack {
-            ChildView()
+            ChildView(p: p)
             
             Button(action: {
                 db.filterData(searchString: input)
+                if let proxy = p {
+                    proxy.scrollTo(db.displayedItems[0].id, anchor: .top)
+                }
                 if let closeModal = closeModal {
                     closeModal()
                 }
@@ -39,17 +43,18 @@ struct databaseView : View {
     @EnvironmentObject var db: ProductsDatabase
     @Environment(\.dismissSearch) var dismissSearch
     @State var searching = false
-    
+    var proxy: ScrollViewProxy?
     var body : some View {
         NavigationView {
-            VStack {
-                searchView()
-                ListProducts()
-            }.onAppear(perform: {
-                db.setDisplayToOriginal()
-            }).navigationTitle("SkinGredients").environmentObject(db)
+           
+                VStack {
+                    searchView(p:proxy)
+                    ListProducts()
+                }.onAppear(perform: {
+                    db.setDisplayToOriginal()
+                }).navigationTitle("SkinGredients").environmentObject(db)
+            }
         }
-    }
 }
 
 struct brandsView : View {
@@ -85,6 +90,7 @@ struct brandsView : View {
 struct ChildView : View {
     @Environment(\.isSearching) var isSearching
     @EnvironmentObject var db : ProductsDatabase
+    var p: ScrollViewProxy?
     
     var body: some View {
         Text("")
@@ -92,6 +98,10 @@ struct ChildView : View {
                 if !newValue {
                     print("Searching cancelled")
                     db.displayedItems = db.items
+                    if let proxy = p {
+                        proxy.scrollTo(db.items[0].id, anchor: .top)
+                    }
+                    
                 }
             }
     }
