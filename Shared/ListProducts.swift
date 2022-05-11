@@ -9,31 +9,54 @@ import Foundation
 import SwiftUI
 
 // Creates how the database is presented.
-struct databaseView : View {
-    // @State private var input = ""
-    @SceneStorage("input") var input: String = "" // SceneStorage on the search textbox
+
+struct searchView: View {
+    @SceneStorage("input") var input: String = ""
     @EnvironmentObject var db: ProductsDatabase
-    @Environment(\.dismissSearch) var dismissSearch
-    @State var searching = false
+    var closeModal: (()->Void)?
+    var p: ScrollViewProxy?
     
-    var body : some View {
+    var body: some View {
         VStack {
-            ChildView()
+            ChildView(p: p)
             
             Button(action: {
                 db.filterData(searchString: input)
+                if let proxy = p {
+                    if db.displayedItems.count > 0 {
+                        proxy.scrollTo(db.displayedItems[0].id, anchor: .top)
+                    }
+                }
+                if let closeModal = closeModal {
+                    closeModal()
+                }
             }) {
                 Text("Search")
                     .foregroundColor(.orange)
                     .font(.system(size: 20, weight: .semibold))
             }
-            ListProducts()
-        }.onAppear(perform: {
-            db.setDisplayToOriginal()
-        }).navigationTitle("SkinGredients") .environmentObject(db)
-            .searchable(text: $input,prompt: "Search by Keyword")
-            
+        }.searchable(text: $input,prompt: "Search by Keyword")
     }
+    
+}
+struct databaseView : View {
+    // @State private var input = ""
+     // SceneStorage on the search textbox
+    @EnvironmentObject var db: ProductsDatabase
+    @Environment(\.dismissSearch) var dismissSearch
+    @State var searching = false
+    var proxy: ScrollViewProxy?
+    var body : some View {
+        NavigationView {
+           
+                VStack {
+                    searchView(p:proxy)
+                    ListProducts()
+                }.onAppear(perform: {
+                    db.setDisplayToOriginal()
+                }).navigationTitle("SkinGredients").environmentObject(db)
+            }
+        }
 }
 
 struct brandsView : View {
@@ -69,6 +92,7 @@ struct brandsView : View {
 struct ChildView : View {
     @Environment(\.isSearching) var isSearching
     @EnvironmentObject var db : ProductsDatabase
+    var p: ScrollViewProxy?
     
     var body: some View {
         Text("")
@@ -76,6 +100,12 @@ struct ChildView : View {
                 if !newValue {
                     print("Searching cancelled")
                     db.displayedItems = db.items
+                    if let proxy = p {
+                        if db.items.count > 0 {
+                            proxy.scrollTo(db.items[0].id, anchor: .top)
+                        }
+                    }
+                    
                 }
             }
     }
@@ -84,16 +114,26 @@ struct ChildView : View {
 struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
+    @SceneStorage("input") var input: String = ""
 
     var body: some View {
         ZStack {
             List(db.displayedItems, id: \.id) { item in
-                itemInfo(item: item)
-                otherButtons(item: item)
+                if !db.loading {
+                    itemInfo(item: item)
+                    otherButtons(item: item)
+                }
             }
             if (db.loading){
                 VStack {
                     ActivityIndicator(style: .large)
+                }
+            }
+            else {
+                if (db.displayedItems.isEmpty) {
+                    VStack {
+                        Text("Sorry, nothing about that was found!")
+                    }
                 }
             }
         }

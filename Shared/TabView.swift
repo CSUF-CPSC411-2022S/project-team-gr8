@@ -19,23 +19,32 @@ class TabView : ObservableObject {
 // Creates a FullScreenModal View for the AR Search.
 struct FullScreenModalView : View {
     @Environment(\.presentationMode) var presentationMode
+    @SceneStorage("input") var input: String = ""
     @StateObject var tV = TabView()
     @State var text: String = ""
-    @State var title: String = ""
+    @EnvironmentObject var db: ProductsDatabase
+    var proxy: ScrollViewProxy?
+    
+    func closeModal() -> Void {
+        presentationMode.wrappedValue.dismiss()
+    }
     
     var body : some View {
-        Text("Close") // Needed for x button to appear
-        // Call AR View
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
-        .edgesIgnoringSafeArea(.all)
-        .onTapGesture{
-            presentationMode.wrappedValue.dismiss()
-        }
-        VStack {
-            Text("hello")
-        }
-//
+            NavigationView {
+                VStack {
+                    searchView(closeModal: self.closeModal, p: proxy).environmentObject(db)
+                    ScanButton(text: $input)
+                    Text("Close") // Needed for x button to appear
+                    // Call AR View
+                    .onTapGesture{
+                        self.closeModal()
+                    }
+                }
+            }
+//        .searchable(text: $input,prompt: "Search by Keyword")
+        // put the search here (search bar and button)
+        // when the search is pressed then "dismiss" the full screen thing and search for the item ( filter db )
+        
         
     } // var body: some View
 } // struct FullScreenModalView
@@ -59,42 +68,41 @@ struct ActivityIndicator: UIViewRepresentable {
 struct switchView : View {
     @ObservedObject var tV = TabView()
     @AppStorage("currentPage") var currentPage = 1
-    @ObservedObject var db = ProductsDatabase()
+    @ObservedObject var db:ProductsDatabase = ProductsDatabase()
     let colors = ["home": Color.blue, "cameraSearch": Color.orange, "brandsFilter": Color.purple]
-  
+
     var body: some View {
         
         ZStack {
-
+            ScrollViewReader { proxy in
             Spacer() // Needed for fullScreenCover to work
-                .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init)
+                    .fullScreenCover(isPresented: $tV.isPresented, content: FullScreenModalView.init).environmentObject(db)
             
-            switch tV.selectedIndex {
-            case 0:
-                NavigationView {
-                    // Call databaseView to display database display format
-                    databaseView()
-                }
-            case 1:
-            // AR View
-                NavigationView {
-                    VStack {
-                        Text("hello")
-                    }
-//                    ARViewContainer().edgesIgnoringSafeArea(.all)
-                }
-            case 2:
-                // Brand Filter
-                NavigationView{
-                    VStack{
-                        brandsView()
-                    }
-                }
-            default:
-                NavigationView{
-                    Text("Remaining Tabs")
-                }
-            } // Switch statement
+                switch tV.selectedIndex {
+                    case 0:
+                            // Call databaseView to display database display format
+                    databaseView(proxy:proxy)
+                    case 1:
+                    // AR View
+                        NavigationView {
+                            VStack {
+                                Text("hello")
+                            }
+        //                    ARViewContainer().edgesIgnoringSafeArea(.all)
+                        }
+                    case 2:
+                        // Brand Filter
+                        NavigationView{
+                            VStack{
+                                brandsView()
+                            }
+                        }
+                    default:
+                        NavigationView{
+                            Text("Remaining Tabs")
+                        }
+                } // Switch statement
+            }
             
         }.environmentObject(db) // ZStack
         
@@ -115,11 +123,14 @@ struct switchView : View {
                     tV.selectedIndex = num
                 }, label: {
                     Spacer()
-                    
+                    VStack {
                     // Custom Button Display
                     if num == 1 {               // AR Search Button
                         Circle()
-                            .stroke(lineWidth: 5).frame(width: 40, height: 40).foregroundColor(tV.selectedIndex == num ? .black : colors["cameraSearch"])
+                            .stroke(lineWidth: 5).frame(width: 40, height: 40).foregroundColor(tV.selectedIndex == num ? .black : colors["cameraSearch"]).frame(width: 30, height:30)
+                        Spacer()
+                        Text("Camera Search").font(.system(size: 13)).foregroundColor(tV.selectedIndex == num ? .black : colors["cameraSearch"])
+                        
                     }
                     
                     if num == 0 {                    // For other buttons
@@ -127,18 +138,21 @@ struct switchView : View {
                             .stroke(lineWidth: 3)
                             .foregroundColor(tV.selectedIndex == num ? colors["home"] : .init(white: 0.8))
                             .frame(width: 30, height:30)
+                        Spacer()
+                        Text("Home").font(.system(size: 13)).foregroundColor(tV.selectedIndex == num ? colors["home"] : .init(white: 0.8))
                     }
                     
                     if num == 2 {
                         BrandsTabIcon()
                             .stroke(lineWidth: 3)
-                            .foregroundColor(tV.selectedIndex == num ? colors["brandsFilter"] : .init(white: 0.8))
-                            .frame(width: 30, height:30)
+                            .foregroundColor(tV.selectedIndex == num ? colors["brandsFilter"] : .init(white: 0.8)).frame(width: 30, height:30)
+                        Spacer()
+                        Text("Explore").font(.system(size: 13)).foregroundColor(tV.selectedIndex == num ? colors["brandsFilter"] : .init(white: 0.8))
                     }
-                    
+                    }
                     Spacer()
                     
-                }) // Button
+                }).frame(height:60) // Button
             } // ForEach
         } // HStack
         
