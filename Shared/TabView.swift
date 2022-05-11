@@ -123,11 +123,14 @@ struct switchView : View {
                     tV.selectedIndex = num
                 }, label: {
                     Spacer()
-                    
+                    VStack {
                     // Custom Button Display
                     if num == 1 {               // AR Search Button
                         Circle()
-                            .stroke(lineWidth: 5).frame(width: 40, height: 40).foregroundColor(tV.selectedIndex == num ? .black : colors["cameraSearch"])
+                            .stroke(lineWidth: 5).frame(width: 40, height: 40).foregroundColor(tV.selectedIndex == num ? .black : colors["cameraSearch"]).frame(width: 30, height:30)
+                        Spacer()
+                        Text("Camera Search").font(.system(size: 13)).foregroundColor(tV.selectedIndex == num ? .black : colors["cameraSearch"])
+                        
                     }
                     
                     if num == 0 {                    // For other buttons
@@ -135,18 +138,21 @@ struct switchView : View {
                             .stroke(lineWidth: 3)
                             .foregroundColor(tV.selectedIndex == num ? colors["home"] : .init(white: 0.8))
                             .frame(width: 30, height:30)
+                        Spacer()
+                        Text("Home").font(.system(size: 13)).foregroundColor(tV.selectedIndex == num ? colors["home"] : .init(white: 0.8))
                     }
                     
                     if num == 2 {
                         BrandsTabIcon()
                             .stroke(lineWidth: 3)
-                            .foregroundColor(tV.selectedIndex == num ? colors["brandsFilter"] : .init(white: 0.8))
-                            .frame(width: 30, height:30)
+                            .foregroundColor(tV.selectedIndex == num ? colors["brandsFilter"] : .init(white: 0.8)).frame(width: 30, height:30)
+                        Spacer()
+                        Text("Explore").font(.system(size: 13)).foregroundColor(tV.selectedIndex == num ? colors["brandsFilter"] : .init(white: 0.8))
                     }
-                    
+                    }
                     Spacer()
                     
-                }) // Button
+                }).frame(height:60) // Button
             } // ForEach
         } // HStack
         

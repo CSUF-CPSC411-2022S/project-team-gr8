@@ -23,7 +23,9 @@ struct searchView: View {
             Button(action: {
                 db.filterData(searchString: input)
                 if let proxy = p {
-                    proxy.scrollTo(db.displayedItems[0].id, anchor: .top)
+                    if db.displayedItems.count > 0 {
+                        proxy.scrollTo(db.displayedItems[0].id, anchor: .top)
+                    }
                 }
                 if let closeModal = closeModal {
                     closeModal()
@@ -99,7 +101,9 @@ struct ChildView : View {
                     print("Searching cancelled")
                     db.displayedItems = db.items
                     if let proxy = p {
-                        proxy.scrollTo(db.items[0].id, anchor: .top)
+                        if db.items.count > 0 {
+                            proxy.scrollTo(db.items[0].id, anchor: .top)
+                        }
                     }
                     
                 }
@@ -110,16 +114,26 @@ struct ChildView : View {
 struct ListProducts: View {
     @EnvironmentObject var db: ProductsDatabase
     var width_titles: CGFloat = 100
+    @SceneStorage("input") var input: String = ""
 
     var body: some View {
         ZStack {
             List(db.displayedItems, id: \.id) { item in
-                itemInfo(item: item)
-                otherButtons(item: item)
+                if !db.loading {
+                    itemInfo(item: item)
+                    otherButtons(item: item)
+                }
             }
             if (db.loading){
                 VStack {
                     ActivityIndicator(style: .large)
+                }
+            }
+            else {
+                if (db.displayedItems.isEmpty) {
+                    VStack {
+                        Text("Sorry, nothing about that was found!")
+                    }
                 }
             }
         }
