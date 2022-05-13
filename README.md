@@ -1,5 +1,4 @@
 # project-team-gr8
-project-team-gr8 created by GitHub Classroom
 # Skingredients Product Scanner
 ## Authors:
 - Tristan Stewart (<stewarttristan844@csu.fullerton.edu>)
@@ -23,3 +22,6 @@ An AR-based application that provides filters for skincare/hygienic products, th
 6. Compare Prices with Amazon (Patricia Ong) - This feature will help the user compare the price of the product they’ve scanned to the ones on Amazon. 
 7. Product Reviews (Tristan Stewart) - This feature will help users provide their opinions on the product and view other reviews of the product.
 
+<p align="center">
+<img width="381" alt="image" src="https://user-images.githubusercontent.com/42697600/168390649-fad2e3a3-94e6-45ac-8e3c-8f8ecae98baa.png">
+</p>
